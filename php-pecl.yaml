@@ -3,6 +3,34 @@
     pecl_name:
       - php-amqp
       - php-apcu
+      - php-apcu-bc
+      - php-gearman
+      - php-geoip
+      - php-gmagick
+      - php-igbinary
+      - php-imagick
+      - php-mailparse
+      - php-memcache
+      - php-memcached
+      - php-mongodb
+      - php-msgpack
+      - php-oauth
+      - php-radius
+      - php-redis
+      - php-rrd
+      - php-stomp
+      - php-smbclient
+      - php-solr
+      - php-ssh2
+      - php-uploadprogress
+      - php-uuid
+      - php-yac
+      - php-zmq
+      - php-propro
+      - php-raphf
+      - php-pecl-http
+      - tidyways
+      - xdebug
     jobs:
       - '{pecl_name}-source'
       - '{pecl_name}-binaries'
