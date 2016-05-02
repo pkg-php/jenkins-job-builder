@@ -53,7 +53,7 @@
     axes:
       - axis:
           type: user-defined
-          name: distributions
+          name: distribution
           values:
             - jessie
             - stretch
@@ -99,7 +99,7 @@
             - i386
       - axis:
           type: user-defined
-          name: distributions
+          name: distribution
           values:
             - jessie
             - stretch
