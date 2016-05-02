@@ -1,6 +1,6 @@
 - project:
     name: pecl-extensions
-    pecl_name:
+    pecl:
       - php-amqp
       - php-apcu
       - php-apcu-bc
@@ -32,16 +32,16 @@
       - tidyways
       - xdebug
     jobs:
-      - '{pecl_name}-source'
-      - '{pecl_name}-binaries'
-      - '{pecl_name}-piuparts'
+      - '{pecl}-source'
+      - '{pecl}-binaries'
+      - '{pecl}-piuparts'
 
 - job-template:
-    name: '{pecl_name}-source'
+    name: '{pecl}-source'
     project-type: matrix
     scm:
       - git:
-          url: 'git://anonscm.debian.org/pkg-php/{pecl_name}.git'
+          url: 'git://anonscm.debian.org/pkg-php/{pecl}.git'
           name: origin
           refspec: +refs/heads/*:refs/remotes/origin/*
           basedir: source
@@ -70,7 +70,7 @@
       - archive:
           artifacts: '*.gz,*.bz2,*.xz,*.deb,*.dsc,*.git,*.changes,lintian.txt'
       - trigger:
-          project: '{name}-binaries'
+          project: '{pecl}-binaries'
       - junit:
           results: '**/lintian.xml'
           keep-long-stdio: false
@@ -78,10 +78,10 @@
           record-artifacts: true
 
 - job-template:
-    name: '{pecl_name}-binaries'
+    name: '{pecl}-binaries'
     project-type: matrix
     description: |
-      <p>Build Debian binary packages of {name}.<br />Do not edit this job through the web, it is generated via jenkins-job-builder!</p>
+      <p>Build Debian binary packages of {pecl}.<br />Do not edit this job through the web, it is generated via jenkins-job-builder!</p>
       <h2>Usage instructions how to remotely access and use the repository:</h2>
       <p>Then access to this repository is available using the following sources.list entry:</p>
       <pre>
@@ -105,7 +105,7 @@
             - stretch
     builders:
       - copyartifact:
-          project: '{pecl_name}-source/distribution=${{distribution}}'
+          project: '{pecl}-source/distribution=${{distribution}}'
           filter: '*'
           which-build: upstream-build
           fallback-to-last-successful: true
@@ -131,16 +131,16 @@
       - fingerprint:
           record-artifacts: true
       - trigger:
-          project: '{pecl_name}-piuparts'
+          project: '{pecl}-piuparts'
       - workspace-cleanup:
           dirmatch: false
     wrappers:
       - timestamps
 
 - job-template:
-    name: '{pecl_name}-piuparts'
+    name: '{pecl}-piuparts'
     project-type: freestyle
-    description: 'Installation and upgrade tests for {name} Debian packages.<br />Do not edit this job through the web, it is generated via jenkins-job-builder!'
+    description: 'Installation and upgrade tests for {pecl} Debian packages.<br />Do not edit this job through the web, it is generated via jenkins-job-builder!'
     disabled: false
     parameters:
       - string:
@@ -153,7 +153,7 @@
           description: "Distribution that should be used."
     builders:
       - copyartifact:
-          project: '{name}-binaries/architecture=${{architecture}}/distribution=${{distribution}}'
+          project: '{pecl}-binaries/architecture=${{architecture}}/distribution=${{distribution}}'
           filter: '*.deb'
           which-build: upstream-build
           fallback-to-last-successful: true
