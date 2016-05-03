@@ -12,6 +12,7 @@
       - php-mailparse
       - php-memcache
       - php-memcached
+      - php-mongo
       - php-mongodb
       - php-msgpack
       - php-oauth
@@ -30,6 +31,7 @@
       - php-raphf
       - php-pecl-http
       - tidyways
+      - xcache
       - xdebug
     jobs:
       - '{pecl}-source'
