@@ -153,7 +153,7 @@
           description: "Distribution that should be used."
     builders:
       - copyartifact:
-          project: '{pecl}-binaries/architecture=${{architecture}}/distribution=${{distribution}}'
+          project: '{pecl}-binaries/architecture=${{architecture}},distribution=${{distribution}}'
           filter: '*.deb'
           which-build: upstream-build
           fallback-to-last-successful: true
@@ -161,7 +161,7 @@
           target: 'artifacts/'
       - shell: |
           # sadly piuparts always returns with exit code 1 :((
-          sudo piuparts_wrapper $PWD/artifacts/*.deb || true
+          sudo piuparts_wrapper ${{PWD}}/artifacts/*.deb || true
       - shell: |
           piuparts_tap piuparts.txt > piuparts.tap
     publishers:
