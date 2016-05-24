@@ -1,6 +1,15 @@
 - project:
     name: pecl-extensions
-    pecl:
+    repo: php
+    distributions: !!python/tuple [jessie, stretch]
+    architectures: !!python/tuple [amd64, i386]
+    branches: !!python/tuple [master]
+    git-url: 'git://anonscm.debian.org/pkg-php/{package}.git'
+    package:
+      - libzip:
+          git-url: 'git://anonscm.debian.org/collab-maint/libzip.git'
+      - librabbitmq:
+          git-url: 'git://anonscm.debian.org/collab-maint/librabbitmq.git'
       - php-amqp
       - php-apcu
       - php-apcu-bc
@@ -30,25 +39,27 @@
       - php-propro
       - php-raphf
       - php-pecl-http
-      - tidyways
+      - tideways
       - xcache
       - xdebug
+      - php-pear:
+          architectures: !!python/tuple [amd64]
+          branches: !!python/tuple [debian/sid]
     jobs:
-      - '{pecl}-source'
-      - '{pecl}-binaries'
-      - '{pecl}-piuparts'
+      - '{package}-source'
+      - '{package}-binaries'
+      - '{package}-piuparts'
 
 - job-template:
-    name: '{pecl}-source'
+    name: '{package}-source'
     project-type: matrix
     scm:
       - git:
-          url: 'git://anonscm.debian.org/pkg-php/{pecl}.git'
+          url: '{git-url}'
           name: origin
           refspec: +refs/heads/*:refs/remotes/origin/*
           basedir: source
-          branches:
-            - master
+          branches: '{obj:branches}'
           wipe-workspace: false
     execution-strategy:
       sequential: trueaxes
@@ -56,9 +67,7 @@
       - axis:
           type: user-defined
           name: distribution
-          values:
-            - jessie
-            - stretch
+          values: '{obj:distributions}'
     builders:
       - shell: |
           rm -f ./* || true
@@ -72,7 +81,7 @@
       - archive:
           artifacts: '*.gz,*.bz2,*.xz,*.deb,*.dsc,*.git,*.changes,lintian.txt'
       - trigger:
-          project: '{pecl}-binaries'
+          project: '{package}-binaries'
       - junit:
           results: '**/lintian.xml'
           keep-long-stdio: false
@@ -80,15 +89,15 @@
           record-artifacts: true
 
 - job-template:
-    name: '{pecl}-binaries'
+    name: '{package}-binaries'
     project-type: matrix
     description: |
-      <p>Build Debian binary packages of {pecl}.<br />Do not edit this job through the web, it is generated via jenkins-job-builder!</p>
+      <p>Build Debian binary packages of {package}.<br />Do not edit this job through the web, it is generated via jenkins-job-builder!</p>
       <h2>Usage instructions how to remotely access and use the repository:</h2>
       <p>Then access to this repository is available using the following sources.list entry:</p>
       <pre>
-      deb     https://$jenkins_server/php/ <distribution> main
-      deb-src https://$jenkins_server/php/ <distribution> main
+      deb     https://packages.sury.org/{repo}/ jessie|stretch main
+      deb-src https://packages.sury.org/{repo}/ jessie|stretch main
       </pre>
     execution-strategy:
       sequential: true
@@ -96,30 +105,26 @@
       - axis:
           type: user-defined
           name: architecture
-          values:
-            - amd64
-            - i386
+          values: '{obj:architectures}'
       - axis:
           type: user-defined
           name: distribution
-          values:
-            - jessie
-            - stretch
+          values: '{obj:distributions}'
     builders:
       - copyartifact:
-          project: '{pecl}-source/distribution=${{distribution}}'
+          project: '{package}-source/distribution=${{distribution}}'
           filter: '*'
           which-build: upstream-build
           fallback-to-last-successful: true
       - shell: |
           export POST_BUILD_HOOK=/usr/bin/jdg-debc
           export release=$distribution
-          export RELEASE_REPOSITORY=/srv/repository/php
+          export RELEASE_REPOSITORY=/srv/repository/{repo}
           export RELEASE_DISTRIBUTION=$distribution
           /usr/bin/build-and-provide-package
       - shell: |
-          export REPOSITORY=/srv/repository/php
-          echo "Listing packages inside the php repository:"
+          export REPOSITORY=/srv/repository/{repo}
+          echo "Listing packages inside the {repo} repository:"
           /usr/bin/repository_checker --list-repos $distribution
       - shell: |
           mkdir -p report
@@ -133,16 +138,16 @@
       - fingerprint:
           record-artifacts: true
       - trigger:
-          project: '{pecl}-piuparts'
+          project: '{package}-piuparts'
       - workspace-cleanup:
           dirmatch: false
     wrappers:
       - timestamps
 
 - job-template:
-    name: '{pecl}-piuparts'
+    name: '{package}-piuparts'
     project-type: freestyle
-    description: 'Installation and upgrade tests for {pecl} Debian packages.<br />Do not edit this job through the web, it is generated via jenkins-job-builder!'
+    description: 'Installation and upgrade tests for {package} Debian packages.<br />Do not edit this job through the web, it is generated via jenkins-job-builder!'
     disabled: false
     parameters:
       - string:
@@ -155,7 +160,7 @@
           description: "Distribution that should be used."
     builders:
       - copyartifact:
-          project: '{pecl}-binaries/architecture=${{architecture}},distribution=${{distribution}}'
+          project: '{package}-binaries/architecture=${{architecture}},distribution=${{distribution}}'
           filter: '*.deb'
           which-build: upstream-build
           fallback-to-last-successful: true
