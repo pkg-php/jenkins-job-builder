@@ -1,4 +1,4 @@
-all: php knot-resolver mesa knot
+all: $(patsubst %.yaml,%,$(wildcard *.yaml))
 	:
 
 %:
