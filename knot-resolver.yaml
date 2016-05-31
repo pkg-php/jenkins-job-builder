@@ -16,6 +16,9 @@
       - golang-check.v1:
           git-url: 'git://anonscm.debian.org/pkg-go/packages/golang-check.v1.git'
           architectures: !!python/tuple [amd64]
+      - luajit:
+          git-url: 'git://git.debian.org/git/pkg-lua/luajit.git'
+          branches: !!python/tuple [master-experimental]
     jobs:
       - '{package}-source'
       - '{package}-binaries'
