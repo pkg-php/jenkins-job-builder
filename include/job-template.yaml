@@ -2,7 +2,7 @@
     name: '{repo}_{package}-source'
     project-type: matrix
     execution-strategy:
-      sequential: trueaxes
+      sequential: false
     scm:
       - git:
           url: '{git-url}'
@@ -35,23 +35,28 @@
           keep-long-stdio: false
       - fingerprint:
           record-artifacts: true
+    properties:
+      - build-discarder:
+          num-to-keep: 3
+          artifact-num-to-keep: 1
       
 - job-template:
     name: '{repo}_{package}-binaries'
     project-type: matrix
     description: |
       <p>Build Debian binary packages of {package}.<br />Do not edit this job through the web, it is generated via jenkins-job-builder!</p>
-      <h2>Usage instructions how to remotely access and use the repository:</h2>
-      <p>Then access to this repository is available using the following sources.list entry:</p>
+      <h2>Usage instructions how to remotely access and use the repository (as root user):</h2>
       <pre>
+      apt-get install lsb-release apt-transport-https
       wget -O /etc/apt/trusted.gpg.d/{repo}.gpg https://packages.sury.org/{repo}_apt.gpg
       cat << EOF > /etc/apt/sources.list.d/{repo}.list
-      deb     https://packages.sury.org/{repo}_ stretch main
-      deb-src https://packages.sury.org/{repo}_ stretch main
+      deb     https://packages.sury.org/{repo} $(lsb_release -cs) main
+      #deb-src https://packages.sury.org/{repo} $(lsb_release -cs) main
       EOF
+      apt-get update
       </pre>
     execution-strategy:
-      sequential: true
+      sequential: false
     axes:
       - axis:
           type: user-defined
@@ -94,6 +99,10 @@
           dirmatch: false
     wrappers:
       - timestamps
+    properties:
+      - build-discarder:
+          num-to-keep: 3
+          artifact-num-to-keep: 1
 
 - job-template:
     name: '{repo}_{package}-piuparts'
@@ -133,3 +142,7 @@
           dirmatch: false
     wrappers:
       - timestamps
+    properties:
+      - build-discarder:
+          num-to-keep: 3
+          artifact-num-to-keep: 1

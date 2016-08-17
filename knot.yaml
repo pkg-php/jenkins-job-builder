@@ -2,7 +2,7 @@
     name: knot
     repo: knot
     distributions: !!python/tuple [jessie, stretch]
-    architectures: !!python/tuple [amd64, i386]
+    architectures: !!python/tuple [amd64, i386, arm64, armhf]
     branches: !!python/tuple [master]
     package:
       - knot:

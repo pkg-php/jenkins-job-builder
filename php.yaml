@@ -6,6 +6,8 @@
     branches: !!python/tuple [master]
     git-url: 'git://anonscm.debian.org/pkg-php/{package}.git'
     package:
+      - tidy-html5:
+          git-url: 'git://anonscm.debian.org/collab-maint/tidy-html5.git'
       - libzip:
           git-url: 'git://anonscm.debian.org/collab-maint/libzip.git'
       - librabbitmq:

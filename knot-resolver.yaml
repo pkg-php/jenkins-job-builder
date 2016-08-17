@@ -2,23 +2,43 @@
     name: knot-resolver
     repo: knot-resolver
     distributions: !!python/tuple [jessie, stretch]
-    architectures: !!python/tuple [amd64, i386]
+    architectures: !!python/tuple [amd64, i386, arm64, armhf]
     branches: !!python/tuple [master]
     package:
       - knot-resolver:
           git-url: 'git://anonscm.debian.org/pkg-dns/knot-resolver.git'
-      - golang-go:
-          git-url: 'git://anonscm.debian.org/pkg-golang/golang.git'
-          branches: !!python/tuple [debian-sid]
-      - golang-github-abh-geoip-dev:
-          git-url: 'git://anonscm.debian.org/collab-maint/golang-github-abh-geoip-dev.git'
-          architectures: !!python/tuple [amd64]
-      - golang-check.v1:
-          git-url: 'git://anonscm.debian.org/pkg-go/packages/golang-check.v1.git'
-          architectures: !!python/tuple [amd64]
+      - cmocka:
+          git-url: 'git://anonscm.debian.org/collab-maint/cmocka.git'
       - luajit:
           git-url: 'git://git.debian.org/git/pkg-lua/luajit.git'
           branches: !!python/tuple [master-experimental]
+      - lua-bit32:
+          git-url: https://github.com/oerdnj/lua-bit32.git
+      - lua-basexx:
+          git-url: git://git.debian.org/git/pkg-lua/lua-basexx.git
+          architectures: !!python/tuple [amd64]
+      - lua-compat53:
+          git-url: git://git.debian.org/git/pkg-lua/lua-compat53.git
+      - lua-cqueues:
+          git-url: git://git.debian.org/git/pkg-lua/lua-cqueues.git
+      - lua-fifo:
+          git-url: git://git.debian.org/git/pkg-lua/lua-fifo.git
+          architectures: !!python/tuple [amd64]
+      - lua-http:
+          git-url: git://git.debian.org/git/pkg-lua/lua-http.git
+          architectures: !!python/tuple [amd64]
+      - lua-lpeg-patterns:
+          git-url: git://git.debian.org/git/pkg-lua/lua-lpeg-patterns.git
+          architectures: !!python/tuple [amd64]
+      - lua-mmdb:
+          git-url: git://git.debian.org/git/pkg-lua/lua-mmdb.git
+          architectures: !!python/tuple [amd64]
+      - lua-openssl:
+          git-url: git://git.debian.org/git/pkg-lua/lua-openssl.git
+      - knot:
+          git-url: 'git://anonscm.debian.org/pkg-dns/knot.git'
+      - lmdb:
+          git-url: 'git://anonscm.debian.org/pkg-db/lmdb.git'
     jobs:
       - '{repo}_{package}-source'
       - '{repo}_{package}-binaries'
