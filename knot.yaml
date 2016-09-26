@@ -4,6 +4,7 @@
     distributions: !!python/tuple [jessie, stretch]
     architectures: !!python/tuple [amd64, i386, arm64, armhf]
     branches: !!python/tuple [master]
+    sequential: false
     package:
       - knot:
           git-url: 'git://anonscm.debian.org/pkg-dns/knot.git'

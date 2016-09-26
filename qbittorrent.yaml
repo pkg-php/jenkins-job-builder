@@ -4,6 +4,7 @@
     distributions: !!python/tuple [stretch]
     architectures: !!python/tuple [amd64]
     branches: !!python/tuple [master]
+    sequential: false
     package:
       - libtorrent-rasterbar:
           git-url: 'https://github.com/oerdnj/libtorrent-rasterbar.git'

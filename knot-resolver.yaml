@@ -4,6 +4,7 @@
     distributions: !!python/tuple [jessie, stretch]
     architectures: !!python/tuple [amd64, i386, arm64, armhf]
     branches: !!python/tuple [master]
+    sequential: false
     package:
       - knot-resolver:
           git-url: 'git://anonscm.debian.org/pkg-dns/knot-resolver.git'
@@ -39,6 +40,9 @@
           git-url: 'git://anonscm.debian.org/pkg-dns/knot.git'
       - lmdb:
           git-url: 'git://anonscm.debian.org/pkg-db/lmdb.git'
+      - libuv1:
+          git-url: 'git://anonscm.debian.org/pkg-javascript/libuv1.git'
+          branches: !!python/tuple [debian/sid]
     jobs:
       - '{repo}_{package}-source'
       - '{repo}_{package}-binaries'
