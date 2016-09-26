@@ -1,0 +1,15 @@
+- project:
+    name: nginx
+    repo: nginx
+    distributions: !!python/tuple [jessie]
+    architectures: !!python/tuple [amd64, i386]
+    branches: !!python/tuple [master]
+    package:
+      - openssl:
+          git-url: 'https://github.com/oerdnj/openssl.git'
+      - nginx:
+          git-url: 'https://anonscm.debian.org/cgit/collab-maint/nginx.git'
+    jobs:
+      - '{repo}_{package}-source'
+      - '{repo}_{package}-binaries'
+      - '{repo}_{package}-piuparts'

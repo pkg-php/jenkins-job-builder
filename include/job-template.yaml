@@ -116,7 +116,7 @@
           description: "Architecture that should be used."
       - string:
           name: distribution
-          default: stretch
+          default: jessie
           description: "Distribution that should be used."
     builders:
       - copyartifact:

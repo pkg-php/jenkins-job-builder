@@ -7,6 +7,10 @@
     git-url: 'git://anonscm.debian.org/pkg-php/{package}.git'
     sequential: !!python/bool True
     package:
+      - cmake:
+          git-url: 'https://github.com/oerdnj/cmake.git'
+      - openssl:
+          git-url: 'https://github.com/oerdnj/openssl.git'
       - tidy-html5:
           git-url: 'git://anonscm.debian.org/collab-maint/tidy-html5.git'
       - libzip:
@@ -28,8 +32,11 @@
       - php7.1:
           git-url: 'https://anonscm.debian.org/git/pkg-php/php.git'
           branches: !!python/tuple [master-7.1]
-      - php-defaults
-      - dh-php
+      - php-defaults:
+          branches: !!python/tuple [master-coinst]
+          architectures: !!python/tuple [amd64]
+      - dh-php:
+          architectures: !!python/tuple [amd64]
       - php-amqp
       - php-apcu
       - php-apcu-bc
