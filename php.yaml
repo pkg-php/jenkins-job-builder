@@ -33,13 +33,14 @@
           git-url: 'https://anonscm.debian.org/git/pkg-php/php.git'
           branches: !!python/tuple [master-7.1]
       - php-defaults:
-          branches: !!python/tuple [master-coinst]
           architectures: !!python/tuple [amd64]
+          branches: !!python/tuple [master-coinst]
       - dh-php:
           architectures: !!python/tuple [amd64]
       - php-amqp
       - php-apcu
       - php-apcu-bc
+      - php-ast
       - php-gearman
       - php-geoip
       - php-gmagick
@@ -62,6 +63,7 @@
       - php-uploadprogress
       - php-uuid
       - php-yac
+      - php-yaml
       - php-zmq
       - php-propro
       - php-raphf
