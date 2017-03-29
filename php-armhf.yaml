@@ -1,12 +1,12 @@
 - project:
-    name: php
+    name: php-armhf
     repo: php
     distributions: !!python/tuple [jessie, stretch]
-    architectures: !!python/tuple [amd64, i386]
+    architectures: !!python/tuple [armhf]
     branches: !!python/tuple [master]
     git-url: 'git://anonscm.debian.org/pkg-php/{package}.git'
     sequential: !!python/bool True
-    deb_build_options: nocheck
+    deb_build_options: nocheck noautodbgsym
     deb_build_profiles: nocheck
     package:
       - cmake:
@@ -44,7 +44,6 @@
       - php-apcu
       - php-apcu-bc
       - php-ast
-      - php-ds
       - php-gearman
       - php-geoip
       - php-gmagick

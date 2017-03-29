@@ -1,0 +1,24 @@
+- project:
+    name: dpkg
+    repo: dpkg
+    distributions: !!python/tuple [jessie]
+    architectures: !!python/tuple [amd64, i386]
+    branches: !!python/tuple [master]
+    sequential: !!python/bool False
+    deb_build_options: nocheck noautodbgsym
+    deb_build_profiles: nocheck
+    package:
+      - dpkg:
+          git-url: 'https://github.com/oerdnj/dpkg.git'
+      - debhelper:
+          git-url: 'https://github.com/oerdnj/debhelper.git'
+          branches: !!python/tuple [jessie-backports]
+          architectures: !!python/tuple [amd64]
+      - dh-autoreconf:
+          git-url: 'https://anonscm.debian.org/git/collab-maint/dh-autoreconf.git'
+          branches: !!python/tuple [jessie-backports]
+          architectures: !!python/tuple [amd64]
+    jobs:
+      - '{name}_{package}-source'
+      - '{name}_{package}-binaries'
+      - '{name}_{package}-piuparts'

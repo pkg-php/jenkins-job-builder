@@ -1,5 +1,5 @@
 - job-template:
-    name: '{repo}_{package}-source'
+    name: '{name}_{package}-source'
     project-type: matrix
     execution-strategy:
       sequential: '{obj:sequential}'
@@ -29,7 +29,7 @@
       - archive:
           artifacts: '*.gz,*.bz2,*.xz,*.deb,*.dsc,*.git,*.changes,lintian.txt'
       - trigger:
-          project: '{repo}_{package}-binaries'
+          project: '{name}_{package}-binaries'
       - junit:
           results: '**/lintian.xml'
           keep-long-stdio: false
@@ -41,7 +41,7 @@
           artifact-num-to-keep: 1
       
 - job-template:
-    name: '{repo}_{package}-binaries'
+    name: '{name}_{package}-binaries'
     project-type: matrix
     description: |
       <p>Build Debian binary packages of {package}.<br />Do not edit this job through the web, it is generated via jenkins-job-builder!</p>
@@ -68,7 +68,7 @@
           values: '{obj:distributions}'
     builders:
       - copyartifact:
-          project: '{repo}_{package}-source/distribution=${{distribution}}'
+          project: '{name}_{package}-source/distribution=${{distribution}}'
           filter: '*'
           which-build: upstream-build
           fallback-to-last-successful: true
@@ -77,6 +77,8 @@
           export release=$distribution
           export RELEASE_REPOSITORY=/srv/repository/{repo}
           export RELEASE_DISTRIBUTION=$distribution
+          export DEB_BUILD_OPTIONS="{deb_build_options}"
+          export DEB_BUILD_PROFILES="{deb_build_profiles}"
           /usr/bin/build-and-provide-package
       - shell: |
           export REPOSITORY=/srv/repository/{repo}
@@ -94,7 +96,7 @@
       - fingerprint:
           record-artifacts: true
       - trigger:
-          project: '{repo}_{package}-piuparts'
+          project: '{name}_{package}-piuparts'
       - workspace-cleanup:
           dirmatch: false
     wrappers:
@@ -105,7 +107,7 @@
           artifact-num-to-keep: 1
 
 - job-template:
-    name: '{repo}_{package}-piuparts'
+    name: '{name}_{package}-piuparts'
     project-type: freestyle
     description: 'Installation and upgrade tests for {package} Debian packages.<br />Do not edit this job through the web, it is generated via jenkins-job-builder!'
     disabled: false
@@ -120,7 +122,7 @@
           description: "Distribution that should be used."
     builders:
       - copyartifact:
-          project: '{repo}_{package}-binaries/architecture=${{architecture}},distribution=${{distribution}}'
+          project: '{name}_{package}-binaries/architecture=${{architecture}},distribution=${{distribution}}'
           filter: '*.deb'
           which-build: upstream-build
           fallback-to-last-successful: true

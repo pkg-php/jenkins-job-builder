@@ -4,13 +4,20 @@
     distributions: !!python/tuple [jessie, stretch]
     architectures: !!python/tuple [amd64, i386, arm64, armhf]
     branches: !!python/tuple [master]
-    sequential: false
+    sequential: true
+    deb_build_options: nocheck noautodbgsym
+    deb_build_profiles: nocheck
     package:
       - knot:
           git-url: 'git://anonscm.debian.org/pkg-dns/knot.git'
       - lmdb:
           git-url: 'git://anonscm.debian.org/pkg-db/lmdb.git'
+      - fstrm:
+          git-url: 'git://anonscm.debian.org/users/edmonds/fstrm.git'
+          branches: !!python/tuple [debian/sid]
+      - protobuf-c:
+          git-url: 'git://anonscm.debian.org/users/edmonds/protobuf-c.git'
     jobs:
-      - '{repo}_{package}-source'
-      - '{repo}_{package}-binaries'
-      - '{repo}_{package}-piuparts'
+      - '{name}_{package}-source'
+      - '{name}_{package}-binaries'
+      - '{name}_{package}-piuparts'

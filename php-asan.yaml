@@ -1,0 +1,28 @@
+- project:
+    name: php-asan
+    repo: php-asan
+    distributions: !!python/tuple [jessie]
+    architectures: !!python/tuple [amd64]
+    branches: !!python/tuple [master]
+    git-url: 'git://anonscm.debian.org/pkg-php/{package}.git'
+    sequential: !!python/bool True
+    deb_build_options: nocheck noautodbgsym
+    deb_build_profiles: nocheck
+    package:
+      - tidy-html5:
+          git-url: 'git://anonscm.debian.org/collab-maint/tidy-html5.git'
+      - libzip:
+          git-url: 'git://anonscm.debian.org/collab-maint/libzip.git'
+      - pcre3:
+          git-url: 'https://github.com/oerdnj/pcre3.git'
+          distributions: !!python/tuple [jessie]
+      - php7.0:
+          git-url: 'https://anonscm.debian.org/git/pkg-php/php.git'
+          branches: !!python/tuple [master-7.0-asan]
+      - php-defaults:
+          architectures: !!python/tuple [amd64]
+          branches: !!python/tuple [master]
+    jobs:
+      - '{name}_{package}-source'
+      - '{name}_{package}-binaries'
+      - '{name}_{package}-piuparts'
