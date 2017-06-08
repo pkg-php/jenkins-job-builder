@@ -2,7 +2,7 @@
     name: knot-resolver
     repo: knot-resolver
     distributions: !!python/tuple [jessie]
-    architectures: !!python/tuple [amd64, i386, arm64, armhf]
+    architectures: !!python/tuple [amd64, i386, armhf, arm64]
     branches: !!python/tuple [master]
     git-url: 'git://anonscm.debian.org/pkg-lua/{package}.git'
     sequential: true
@@ -39,6 +39,13 @@
       - knot:
           distributions: !!python/tuple [jessie, stretch]
           git-url: 'git://anonscm.debian.org/pkg-dns/knot.git'
+      - fstrm:
+          distributions: !!python/tuple [jessie, stretch]
+          git-url: 'git://anonscm.debian.org/users/edmonds/fstrm.git'
+          branches: !!python/tuple [debian/sid]
+      - protobuf-c:
+          distributions: !!python/tuple [jessie, stretch]
+          git-url: 'git://anonscm.debian.org/users/edmonds/protobuf-c.git'
       - lmdb:
           git-url: 'git://anonscm.debian.org/pkg-db/lmdb.git'
       - libuv1:

@@ -21,22 +21,29 @@
           git-url: 'git://anonscm.debian.org/collab-maint/libzip.git'
       - librabbitmq:
           git-url: 'git://anonscm.debian.org/collab-maint/librabbitmq.git'
+      - libsass:
+          git-url: 'git://anonscm.debian.org/pkg-sass/libsass.git'
+      - sassphp:
+          git-url: 'https://github.com/oerdnj/sassphp.git'
+          branches: !!python/tuple [debian]
       - pcre3:
           git-url: 'https://github.com/oerdnj/pcre3.git'
           distributions: !!python/tuple [jessie]
       - php5.6:
-          git-url: 'https://anonscm.debian.org/git/pkg-php/php.git'
+          git-url: 'https://gitlab.sury.org/pkg-php/php.git'
           branches: !!python/tuple [master-5.6]
       - php7.0:
-          git-url: 'https://anonscm.debian.org/git/pkg-php/php.git'
+          git-url: 'https://gitlab.sury.org/pkg-php/php.git'
           branches: !!python/tuple [master-7.0]
       - php7.1:
-          git-url: 'https://anonscm.debian.org/git/pkg-php/php.git'
+          git-url: 'https://gitlab.sury.org/pkg-php/php.git'
           branches: !!python/tuple [master-7.1]
       - php-defaults:
+          git-url: 'https://gitlab.sury.org/pkg-php/php-defaults.git'
           architectures: !!python/tuple [amd64]
           branches: !!python/tuple [master-coinst]
       - dh-php:
+          git-url: 'https://gitlab.sury.org/pkg-php/dh-php.git'
           architectures: !!python/tuple [amd64]
       - pkg-php-tools:
           architectures: !!python/tuple [amd64]

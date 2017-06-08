@@ -1,11 +1,11 @@
 - project:
-    name: knot
+    name: knot-arm
     repo: knot
     distributions: !!python/tuple [jessie, stretch]
-    architectures: !!python/tuple [amd64, i386] #, armhf, arm64]
+    architectures: !!python/tuple [armhf, arm64]
     branches: !!python/tuple [master]
     sequential: true
-    deb_build_options: nocheck
+    deb_build_options: nocheck noautodbgsym
     deb_build_profiles: nocheck
     package:
       - knot:

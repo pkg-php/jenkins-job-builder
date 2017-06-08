@@ -1,0 +1,16 @@
+- project:
+    name: dpkg-arm64
+    repo: dpkg
+    distributions: !!python/tuple [jessie]
+    architectures: !!python/tuple [arm64]
+    branches: !!python/tuple [master]
+    sequential: !!python/bool False
+    deb_build_options: nocheck noautodbgsym
+    deb_build_profiles: nocheck
+    package:
+      - dpkg:
+          git-url: 'https://ondrej@gitlab.sury.org/pkg-dpkg/dpkg.git'
+    jobs:
+      - '{name}_{package}-source'
+      - '{name}_{package}-binaries'
+      - '{name}_{package}-piuparts'

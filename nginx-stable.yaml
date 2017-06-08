@@ -1,7 +1,7 @@
 - project:
     name: nginx
     repo: nginx
-    distributions: !!python/tuple [jessie]
+    distributions: !!python/tuple [jessie, stretch]
     architectures: !!python/tuple [amd64, i386]
     branches: !!python/tuple [master]
     sequential: !!python/bool False
@@ -13,8 +13,8 @@
           distributions: !!python/tuple [jessie]
           branches: !!python/tuple [master-1.0]
       - nginx:
-          git-url: 'https://github.com/oerdnj/nginx.git'
-          branches: !!python/tuple [master]
+          git-url: 'https://gitlab.sury.org/pkg-nginx/nginx.git'
+          branches: !!python/tuple [master-1.12]
     jobs:
       - '{name}_{package}-source'
       - '{name}_{package}-binaries'

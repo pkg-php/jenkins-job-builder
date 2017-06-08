@@ -9,13 +9,20 @@
     deb_build_profiles: nocheck
     package:
       - dpkg:
-          git-url: 'https://github.com/oerdnj/dpkg.git'
+          git-url: 'https://ondrej@gitlab.sury.org/pkg-dpkg/dpkg.git'
       - debhelper:
-          git-url: 'https://github.com/oerdnj/debhelper.git'
-          branches: !!python/tuple [jessie-backports]
+          git-url: 'https://anonscm.debian.org/git/debhelper/debhelper.git'
+          architectures: !!python/tuple [amd64]
+          distributions: !!python/tuple [jessie, stretch]
+      - sgml-base:
+          git-url: 'https://ondrej@gitlab.sury.org/pkg-dpkg/sgml-base.git'
+          architectures: !!python/tuple [amd64]
+      - strip-nondeterminism:
+          git-url: 'git://anonscm.debian.org/reproducible/strip-nondeterminism.git'
+          branches: !!python/tuple [debian]
           architectures: !!python/tuple [amd64]
       - dh-autoreconf:
-          git-url: 'https://anonscm.debian.org/git/collab-maint/dh-autoreconf.git'
+          git-url: 'git://anonscm.debian.org/collab-maint/dh-autoreconf.git'
           branches: !!python/tuple [jessie-backports]
           architectures: !!python/tuple [amd64]
     jobs:
