@@ -1,0 +1,23 @@
+- project:
+    <<: *defaults
+    name: nginx-mainline
+    package:
+      - openssl:
+          git-url: 'https://github.com/oerdnj/openssl.git'
+          distributions: !!python/tuple [jessie]
+          branches: !!python/tuple [master-1.1]
+      - nginx:
+          git-url: 'https://gitlab.sury.org/pkg-nginx/nginx.git'
+          branches: !!python/tuple [master-1.13]
+
+- project:
+    <<: *defaults
+    name: nginx
+    package:
+      - openssl:
+          git-url: 'https://github.com/oerdnj/openssl.git'
+          distributions: !!python/tuple [jessie]
+          branches: !!python/tuple [master-1.0]
+      - nginx:
+          git-url: 'https://gitlab.sury.org/pkg-nginx/nginx.git'
+          branches: !!python/tuple [master-1.12]

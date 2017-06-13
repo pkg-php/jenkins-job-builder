@@ -1,12 +1,10 @@
 - project:
+    <<: *defaults
     name: qbittorrent
     repo: qbittorrent
     distributions: !!python/tuple [stretch]
     architectures: !!python/tuple [amd64]
-    branches: !!python/tuple [master]
     sequential: false
-    deb_build_options: nocheck noautodbgsym
-    deb_build_profiles: nocheck
     package:
       - libtorrent-rasterbar:
           git-url: 'https://github.com/oerdnj/libtorrent-rasterbar.git'
@@ -14,7 +12,3 @@
       - qbittorrent:
           git-url: 'https://github.com/oerdnj/qbittorrent.git'
           branches: !!python/tuple [master-stretch]
-    jobs:
-      - '{name}_{package}-source'
-      - '{name}_{package}-binaries'
-      - '{name}_{package}-piuparts'

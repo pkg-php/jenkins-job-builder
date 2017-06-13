@@ -1,16 +1,8 @@
 - project:
+    <<: *defaults
     name: samba
-    repo: samba
     distributions: !!python/tuple [stretch]
     architectures: !!python/tuple [amd64, i386]
-    branches: !!python/tuple [master]
-    sequential: false
-    deb_build_options: nocheck noautodbgsym
-    deb_build_profiles: nocheck
     package:
       - samba:
           git-url: 'https://ondrej@gitlab.sury.org/pkg-samba/samba.git'
-    jobs:
-      - '{name}_{package}-source'
-      - '{name}_{package}-binaries'
-      - '{name}_{package}-piuparts'

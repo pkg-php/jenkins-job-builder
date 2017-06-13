@@ -45,15 +45,10 @@
     project-type: matrix
     description: |
       <p>Build Debian binary packages of {package}.<br />Do not edit this job through the web, it is generated via jenkins-job-builder!</p>
-      <h2>Usage instructions how to remotely access and use the repository (as root user):</h2>
+      <p>Usage instructions how to remotely access and use the repository can be found in the <a href="https://packages.sury.org/{repo}/">{repo} repository</a></p>
+      <p>Or if you really hate security or you just don't care about it:
       <pre>
-      apt-get install lsb-release apt-transport-https
-      wget -O /etc/apt/trusted.gpg.d/{repo}.gpg https://packages.sury.org/{repo}_apt.gpg
-      cat << EOF > /etc/apt/sources.list.d/{repo}.list
-      deb     https://packages.sury.org/{repo} $(lsb_release -cs) main
-      #deb-src https://packages.sury.org/{repo} $(lsb_release -cs) main
-      EOF
-      apt-get update
+      curl -L https://packages.sury.org/knot-resolver/README.txt | bash -x
       </pre>
     execution-strategy:
       sequential: '{obj:sequential}'

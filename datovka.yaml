@@ -1,18 +1,8 @@
 - project:
+    <<: *defaults
     name: datovka
-    repo: datovka
-    distributions: !!python/tuple [jessie, stretch]
-    architectures: !!python/tuple [amd64, i386]
-    branches: !!python/tuple [master]
-    sequential: true
-    deb_build_options: nocheck noautodbgsym
-    deb_build_profiles: nocheck
     package:
       - datovka:
           git-url: 'git://anonscm.debian.org/collab-maint/datovka.git'
       - libisds:
           git-url: 'git://anonscm.debian.org/collab-maint/libisds.git'
-    jobs:
-      - '{name}_{package}-source'
-      - '{name}_{package}-binaries'
-      - '{name}_{package}-piuparts'

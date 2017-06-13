@@ -1,18 +1,10 @@
 - project:
     name: mesa
-    repo: mesa
     distributions: !!python/tuple [stretch]
     architectures: !!python/tuple [amd64, i386]
-    branches: !!python/tuple [master]
-    sequential: false
-    deb_build_options: nocheck noautodbgsym
-    deb_build_profiles: nocheck
+    deb_build_options: nocheck
     package:
       - mesa:
           git-url: 'https://github.com/oerdnj/mesa.git'
           branches: !!python/tuple [debian-unstable]
-    jobs:
-      - '{name}_{package}-source'
-      - '{name}_{package}-binaries'
-      - '{name}_{package}-piuparts'
 

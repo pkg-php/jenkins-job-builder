@@ -1,12 +1,10 @@
-- project:
-    name: dpkg
+- dpkg_packages: &dpkg_packages
+    <<: *defaults
     repo: dpkg
     distributions: !!python/tuple [jessie]
-    architectures: !!python/tuple [amd64, i386]
-    branches: !!python/tuple [master]
-    sequential: !!python/bool False
     deb_build_options: nocheck noautodbgsym
     deb_build_profiles: nocheck
+    sequential: !!python/bool False
     package:
       - dpkg:
           git-url: 'https://ondrej@gitlab.sury.org/pkg-dpkg/dpkg.git'
@@ -25,7 +23,18 @@
           git-url: 'git://anonscm.debian.org/collab-maint/dh-autoreconf.git'
           branches: !!python/tuple [jessie-backports]
           architectures: !!python/tuple [amd64]
-    jobs:
-      - '{name}_{package}-source'
-      - '{name}_{package}-binaries'
-      - '{name}_{package}-piuparts'
+
+- project:
+    name: dpkg
+    architectures: !!python/tuple [amd64, i386]
+    <<: *dpkg_packages
+
+- project:
+    name: dpkg-armhf
+    architectures: !!python/tuple [armhf]
+    <<: *dpkg_packages
+
+- project:
+    name: dpkg-arm64
+    architectures: !!python/tuple [arm64]
+    <<: *dpkg_packages

@@ -1,11 +1,5 @@
-- project:
-    name: mariadb
-    repo: mariadb
-    architectures: !!python/tuple [amd64]
-    branches: !!python/tuple [master]
-    sequential: true
-    deb_build_options: parallel=12
-    deb_build_profiles: ''
+- mariadb_packages: &mariadb_packages
+    <<: *defaults
     package:
       - mariadb-10.0:
           git-url: 'git://anonscm.debian.org/pkg-mysql/mariadb-10.0.git'
@@ -14,7 +8,11 @@
       - mariadb-10.1:
           git-url: 'git://anonscm.debian.org/pkg-mysql/mariadb-10.1.git'
           distributions: !!python/tuple [stretch]
-    jobs:
-      - '{name}_{package}-source'
-      - '{name}_{package}-binaries'
-      - '{name}_{package}-piuparts'
+
+- project:
+    name: mariadb
+    architectures: !!python/tuple [amd64]
+    branches: !!python/tuple [master]
+    deb_build_options: parallel=12
+    deb_build_profiles: ''
+    <<: *mariadb_packages

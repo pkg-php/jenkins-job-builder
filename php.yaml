@@ -1,13 +1,6 @@
-- project:
-    name: php
-    repo: php
-    distributions: !!python/tuple [jessie, stretch]
-    architectures: !!python/tuple [amd64, i386]
-    branches: !!python/tuple [master]
+- php_packages: &php_packages
+    <<: *defaults
     git-url: 'git://anonscm.debian.org/pkg-php/{package}.git'
-    sequential: !!python/bool True
-    deb_build_options: nocheck
-    deb_build_profiles: nocheck
     package:
       - cmake:
           git-url: 'https://github.com/oerdnj/cmake.git'
@@ -85,7 +78,23 @@
       - php-pear:
           architectures: !!python/tuple [amd64]
           branches: !!python/tuple [debian/sid]
-    jobs:
-      - '{name}_{package}-source'
-      - '{name}_{package}-binaries'
-      - '{name}_{package}-piuparts'
+
+- project:
+    name: php
+    repo: php
+    architectures: !!python/tuple [amd64, i386]
+    <<: *php_packages
+
+- project:
+    name: php-armhf
+    repo: php
+    architectures: !!python/tuple [armhf]
+    deb_build_options: nocheck noautodbgsym
+    <<: *php_packages
+
+- project:
+    name: php-arm64
+    repo: php
+    architectures: !!python/tuple [arm64]
+    deb_build_options: nocheck noautodbgsym
+    <<: *php_packages
