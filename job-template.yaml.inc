@@ -1,3 +1,5 @@
+# Hey, emacs, this is -*- yaml -*-
+
 - job-template:
     name: '{name}_{package}-source'
     project-type: matrix

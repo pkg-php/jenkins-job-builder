@@ -1,3 +1,5 @@
+# Hey, emacs, this is -*- yaml -*-
+
 - defaults: &defaults
     name: 'defaults'
     repo: '{name}'
@@ -13,4 +15,3 @@
       - '{name}_{package}-source'
       - '{name}_{package}-binaries'
       - '{name}_{package}-piuparts'
-
