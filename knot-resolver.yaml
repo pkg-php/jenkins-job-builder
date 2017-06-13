@@ -1,19 +1,40 @@
+- knot-resolver_packages: &knot-resolver_packages
+    <<: *defaults
+    name: 'package_defaults'
+    repository_extra: 'deb https://packages.sury.org/knot $distribution main'
+    repository_extra_keys: 'https://packages.sury.org/knot/apt.gpg'
+    package:
+      - cmocka:
+          distributions: !!python/tuple [jessie]
+          git-url: 'git://anonscm.debian.org/collab-maint/cmocka.git'
+      - knot-resolver:
+          git-url: 'git://anonscm.debian.org/pkg-dns/knot-resolver.git'
+      - libuv1:
+          git-url: 'git://anonscm.debian.org/pkg-javascript/libuv1.git'
+          branches: !!python/tuple [debian/sid]
+
 - project:
     name: knot-resolver
+    architectures: !!python/tuple [amd64, i386]
+    <<: *knot-resolver_packages
+
+- project:
+    name: knot-resolver-arm
     repo: knot-resolver
-    distributions: !!python/tuple [jessie]
-    architectures: !!python/tuple [amd64, i386, armhf, arm64]
-    branches: !!python/tuple [master]
-    git-url: 'git://anonscm.debian.org/pkg-lua/{package}.git'
-    sequential: true
+    distributions: !!python/tuple [jessie, stretch]
+    architectures: !!python/tuple [armhf, arm64]
     deb_build_options: nocheck noautodbgsym
     deb_build_profiles: nocheck
+    <<: *knot-resolver_packages
+
+- project:
+    name: knot-resolver-lua
+    repo: knot-resolver
+    <<: *defaults
+    distributions: !!python/tuple [jessie]
+    git-url: 'git://anonscm.debian.org/pkg-lua/{package}.git'
+    deb_build_options: nocheck noautodbgsym
     package:
-      - knot-resolver:
-          distributions: !!python/tuple [jessie, stretch]
-          git-url: 'git://anonscm.debian.org/pkg-dns/knot-resolver.git'
-      - cmocka:
-          git-url: 'git://anonscm.debian.org/collab-maint/cmocka.git'
       - luajit:
           branches: !!python/tuple [master-experimental]
       - lua-sandbox:
@@ -36,23 +57,3 @@
           architectures: !!python/tuple [amd64]
       - lua-mmdb:
           architectures: !!python/tuple [amd64]
-      - knot:
-          distributions: !!python/tuple [jessie, stretch]
-          git-url: 'git://anonscm.debian.org/pkg-dns/knot.git'
-      - fstrm:
-          distributions: !!python/tuple [jessie, stretch]
-          git-url: 'git://anonscm.debian.org/users/edmonds/fstrm.git'
-          branches: !!python/tuple [debian/sid]
-      - protobuf-c:
-          distributions: !!python/tuple [jessie, stretch]
-          git-url: 'git://anonscm.debian.org/users/edmonds/protobuf-c.git'
-      - lmdb:
-          git-url: 'git://anonscm.debian.org/pkg-db/lmdb.git'
-      - libuv1:
-          git-url: 'git://anonscm.debian.org/pkg-javascript/libuv1.git'
-          branches: !!python/tuple [debian/sid]
-    jobs:
-      - '{name}_{package}-source'
-      - '{name}_{package}-binaries'
-      - '{name}_{package}-piuparts'
-

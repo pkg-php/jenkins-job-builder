@@ -1,12 +1,6 @@
-- project:
-    name: knot
-    repo: knot
-    distributions: !!python/tuple [jessie, stretch]
-    architectures: !!python/tuple [amd64, i386] #, armhf, arm64]
-    branches: !!python/tuple [master]
-    sequential: true
-    deb_build_options: nocheck
-    deb_build_profiles: nocheck
+- knot_packages: &knot_packages
+    <<: *defaults
+    name: knot_packages
     package:
       - knot:
           git-url: 'git://anonscm.debian.org/pkg-dns/knot.git'
@@ -20,7 +14,15 @@
           branches: !!python/tuple [debian/sid]
       - protobuf-c:
           git-url: 'git://anonscm.debian.org/users/edmonds/protobuf-c.git'
-    jobs:
-      - '{name}_{package}-source'
-      - '{name}_{package}-binaries'
-      - '{name}_{package}-piuparts'
+
+- project:
+    name: knot
+    architectures: !!python/tuple [amd64, i386]
+    <<: *knot_packages
+
+- project:
+    name: knot-arm
+    repo: knot
+    architectures: !!python/tuple [armhf, arm64]
+    deb_build_options: nocheck noautodbgsym
+    <<: *knot_packages

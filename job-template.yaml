@@ -75,10 +75,13 @@
       - shell: |
           export POST_BUILD_HOOK=/usr/bin/jdg-debc
           export release=$distribution
+          export EXTRAPACKAGES="apt-transport-https"
           export RELEASE_REPOSITORY=/srv/repository/{repo}
           export RELEASE_DISTRIBUTION=$distribution
           export DEB_BUILD_OPTIONS="{deb_build_options}"
           export DEB_BUILD_PROFILES="{deb_build_profiles}"
+          export REPOSITORY_EXTRA="{repository_extra}"
+          export REPOSITORY_EXTRA_KEYS="{repository_extra_keys}"
           /usr/bin/build-and-provide-package
       - shell: |
           export REPOSITORY=/srv/repository/{repo}
@@ -114,11 +117,11 @@
     parameters:
       - string:
           name: architecture
-          default: amd64
+          default: '{architectures[0]}'
           description: "Architecture that should be used."
       - string:
           name: distribution
-          default: jessie
+          default: '{distributions[0]}'
           description: "Distribution that should be used."
     builders:
       - copyartifact:
