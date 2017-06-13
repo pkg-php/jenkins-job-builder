@@ -95,8 +95,8 @@
           keep-long-stdio: false
       - fingerprint:
           record-artifacts: true
-      - trigger:
-          project: '{name}_{package}-piuparts'
+#      - trigger:
+#          project: '{name}_{package}-piuparts'
       - workspace-cleanup:
           dirmatch: false
     wrappers:

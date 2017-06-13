@@ -14,4 +14,4 @@
     jobs:
       - '{name}_{package}-source'
       - '{name}_{package}-binaries'
-      - '{name}_{package}-piuparts'
+#      - '{name}_{package}-piuparts'
