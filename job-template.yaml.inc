@@ -24,17 +24,17 @@
       - shell: |
           export distribution=${{distribution}}
           /usr/bin/generate-git-snapshot
-      - shell: |
-          mkdir -p report
-          /usr/bin/lintian-junit-report *.dsc > report/lintian.xml
+#      - shell: |
+#          mkdir -p report
+#          /usr/bin/lintian-junit-report *.dsc > report/lintian.xml
     publishers:
       - archive:
           artifacts: '*.gz,*.bz2,*.xz,*.deb,*.dsc,*.git,*.changes,lintian.txt'
       - trigger:
           project: '{name}_{package}-binaries'
-      - junit:
-          results: '**/lintian.xml'
-          keep-long-stdio: false
+#      - junit:
+#          results: '**/lintian.xml'
+#          keep-long-stdio: false
       - fingerprint:
           record-artifacts: true
     properties:
@@ -50,7 +50,7 @@
       <p>Usage instructions how to remotely access and use the repository can be found in the <a href="https://packages.sury.org/{repo}/">{repo} repository</a></p>
       <p>Or if you really hate security or you just don't care about it:
       <pre>
-      curl -L https://packages.sury.org/knot-resolver/README.txt | bash -x
+      curl -L https://packages.sury.org/{repo}/README.txt | bash -x
       </pre>
     execution-strategy:
       sequential: '{obj:sequential}'
@@ -84,15 +84,15 @@
           export REPOSITORY=/srv/repository/{repo}
           echo "Listing packages inside the {repo} repository:"
           /usr/bin/repository_checker --list-repos $distribution
-      - shell: |
-          mkdir -p report
-          /usr/bin/lintian-junit-report *.dsc > report/lintian.xml
+#      - shell: |
+#          mkdir -p report
+#          /usr/bin/lintian-junit-report *.dsc > report/lintian.xml
     publishers:
       - archive:
           artifacts: '*.gz,*.bz2,*.xz,*.deb,*.dsc,*.git,*.changes,lintian.txt'
-      - junit:
-          results: '**/lintian.xml'
-          keep-long-stdio: false
+#      - junit:
+#          results: '**/lintian.xml'
+#          keep-long-stdio: false
       - fingerprint:
           record-artifacts: true
 #      - trigger:

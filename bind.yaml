@@ -1,0 +1,73 @@
+- bind_packages: &bind_packages
+    <<: *defaults
+    name: bind_packages
+    package:
+      - bind:
+          git-url: 'https://salsa.debian.org/dns-team/bind9.git'
+          branches: !!python/tuple [master-9.12-backports]
+      - lmdb:
+          git-url: 'https://salsa.debian.org/debian/lmdb'
+      - fstrm:
+          git-url: 'https://salsa.debian.org/ondrej/fstrm'
+      - protobuf-c:
+          git-url: 'https://salsa.debian.org/ondrej/protobuf-c'
+      - protobuf:
+          git-url: 'https://salsa.debian.org/ondrej/protobuf'
+      - googletest:
+          git-url: 'https://salsa.debian.org/ondrej/googletest.git'
+
+- project:
+    name: bind
+    architectures: !!python/tuple [amd64, i386]
+    distributions: !!python/tuple [jessie, stretch, buster]
+    <<: *bind_packages
+
+- bind_esv_packages: &bind_esv_packages
+    <<: *defaults
+    name: bind_packages
+    package:
+      - bind:
+          git-url: 'https://salsa.debian.org/dns-team/bind9.git'
+          branches: !!python/tuple [master-backports]
+      - lmdb:
+          git-url: 'https://salsa.debian.org/debian/lmdb'
+      - fstrm:
+          git-url: 'https://salsa.debian.org/ondrej/fstrm'
+      - protobuf-c:
+          git-url: 'https://salsa.debian.org/ondrej/protobuf-c'
+      - protobuf:
+          git-url: 'https://salsa.debian.org/ondrej/protobuf'
+      - googletest:
+          git-url: 'https://salsa.debian.org/ondrej/googletest.git'
+
+- project:
+    name: bind-esv
+    repo: bind-esv
+    architectures: !!python/tuple [amd64, i386]
+    distributions: !!python/tuple [jessie, stretch, buster]
+    <<: *bind_esv_packages
+
+- bind_dev_packages: &bind_dev_packages
+    <<: *defaults
+    name: bind_packages
+    package:
+      - bind:
+          git-url: 'https://salsa.debian.org/dns-team/bind.git'
+          branches: !!python/tuple [master-backports]
+      - lmdb:
+          git-url: 'https://salsa.debian.org/debian/lmdb'
+      - fstrm:
+          git-url: 'https://salsa.debian.org/ondrej/fstrm'
+      - protobuf-c:
+          git-url: 'https://salsa.debian.org/ondrej/protobuf-c'
+      - protobuf:
+          git-url: 'https://salsa.debian.org/ondrej/protobuf'
+      - googletest:
+          git-url: 'https://salsa.debian.org/ondrej/googletest.git'
+
+- project:
+    name: bind-dev
+    repo: bind-dev
+    architectures: !!python/tuple [amd64, i386]
+    distributions: !!python/tuple [jessie, stretch, buster]
+    <<: *bind_dev_packages

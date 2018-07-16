@@ -7,8 +7,8 @@
     sequential: false
     package:
       - libtorrent-rasterbar:
-          git-url: 'https://github.com/oerdnj/libtorrent-rasterbar.git'
-          branches: !!python/tuple [master-stretch]
+          git-url: 'https://anonscm.debian.org/git/collab-maint/libtorrent-rasterbar.git'
+#          branches: !!python/tuple [master-stretch]
       - qbittorrent:
-          git-url: 'https://github.com/oerdnj/qbittorrent.git'
-          branches: !!python/tuple [master-stretch]
+          git-url: 'https://anonscm.debian.org/git/collab-maint/qbittorrent.git'
+#          branches: !!python/tuple [master-stretch]

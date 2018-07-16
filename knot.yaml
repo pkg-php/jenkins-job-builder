@@ -3,9 +3,9 @@
     name: knot_packages
     package:
       - knot:
-          git-url: 'git://anonscm.debian.org/pkg-dns/knot.git'
+          git-url: 'https://salsa.debian.org/dns-team/knot-dns.git'
       - lmdb:
-          git-url: 'git://anonscm.debian.org/pkg-db/lmdb.git'
+          git-url: ''https://salsa.debian.org/debian/lmdb.git
       - python-lmdb:
           git-url: 'git://anonscm.debian.org/pkg-db/py-lmdb.git'
           branches: !!python/tuple [debian/sid]
@@ -14,6 +14,18 @@
           branches: !!python/tuple [debian/sid]
       - protobuf-c:
           git-url: 'git://anonscm.debian.org/users/edmonds/protobuf-c.git'
+      - nettle:
+          git-url: 'https://gitlab.com/deb.sury.org/nettle.git'
+      - gnutls28:
+          git-url: 'https://gitlab.com/deb.sury.org/gnutls28.git'
+      - libtasn1-6:
+          git-url: 'https://gitlab.com/deb.sury.org/libtasn1-6.git'
+      - p11-kit:
+          git-url: 'https://gitlab.com/deb.sury.org/p11-kit.git'
+      - libunistring:
+          git-url: 'git://anonscm.debian.org/collab-maint/libunistring.git'
+      - libidn2:
+          git-url: 'git://anonscm.debian.org/collab-maint/libidn2.git'
 
 - project:
     name: knot
@@ -26,3 +38,18 @@
     architectures: !!python/tuple [armhf, arm64]
     deb_build_options: nocheck noautodbgsym
     <<: *knot_packages
+
+- knot_qa_packages: &knot_qa_packages
+    <<: *defaults
+    name: knot_qa_packages
+    repository_extra: 'deb [trusted=yes] file:///srv/repository/knot $distribution main'
+    package:
+      - knot:
+          git-url: 'git://anonscm.debian.org/pkg-dns/knot.git'
+          branches: !!python/tuple [master-qa]
+
+- project:
+    name: knot-qa
+    repo: knot-qa
+    architectures: !!python/tuple [amd64, i386]
+    <<: *knot_qa_packages

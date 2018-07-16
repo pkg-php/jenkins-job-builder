@@ -1,0 +1,12 @@
+- bird_packages: &bird_packages
+    <<: *defaults
+    name: bird_packages
+    package:
+      - bird:
+          git-url: 'https://salsa.debian.org/debian/bird.git'
+
+- project:
+    name: bird
+    architectures: !!python/tuple [amd64, i386]
+    distributions: !!python/tuple [wheezy, jessie, stretch]
+    <<: *bird_packages

@@ -7,20 +7,23 @@
     sequential: !!python/bool False
     package:
       - dpkg:
-          git-url: 'https://ondrej@gitlab.sury.org/pkg-dpkg/dpkg.git'
+          git-url: 'https://gitlab.com/deb.sury.org/dpkg.git'
       - debhelper:
-          git-url: 'https://anonscm.debian.org/git/debhelper/debhelper.git'
+          git-url: 'https://salsa.debian.org/debian/debhelper.git'
           architectures: !!python/tuple [amd64]
           distributions: !!python/tuple [jessie, stretch]
+      - tar:
+          git-url: 'https://salsa.debian.org/debian/tar.git'
+          branches: !!python/tuple [dfsg-debian]
       - sgml-base:
-          git-url: 'https://ondrej@gitlab.sury.org/pkg-dpkg/sgml-base.git'
+          git-url: 'https://salsa.debian.org/ondrej/sgml-base.git'
           architectures: !!python/tuple [amd64]
       - strip-nondeterminism:
-          git-url: 'git://anonscm.debian.org/reproducible/strip-nondeterminism.git'
+          git-url: 'https://salsa.debian.org/reproducible-builds/strip-nondeterminism.git'
           branches: !!python/tuple [debian]
           architectures: !!python/tuple [amd64]
       - dh-autoreconf:
-          git-url: 'git://anonscm.debian.org/collab-maint/dh-autoreconf.git'
+          git-url: 'https://salsa.debian.org/debian/dh-autoreconf.git'
           branches: !!python/tuple [jessie-backports]
           architectures: !!python/tuple [amd64]
 

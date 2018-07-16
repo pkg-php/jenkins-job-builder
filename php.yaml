@@ -1,42 +1,54 @@
 - php_packages: &php_packages
     <<: *defaults
-    git-url: 'git://anonscm.debian.org/pkg-php/{package}.git'
+    git-url: 'https://salsa.debian.org/php-team/pecl/{package}.git'
     package:
       - cmake:
           git-url: 'https://github.com/oerdnj/cmake.git'
-      - openssl:
-          git-url: 'https://github.com/oerdnj/openssl.git'
-          distributions: !!python/tuple [jessie]
-          branches: !!python/tuple [master-1.0]
+      - pcre2:
+          git-url: 'https://salsa.debian.org/debian/pcre2.git'
       - tidy-html5:
-          git-url: 'git://anonscm.debian.org/collab-maint/tidy-html5.git'
+          git-url: 'https://salsa.debian.org/debian/tidy-html5.git'
       - libzip:
-          git-url: 'git://anonscm.debian.org/collab-maint/libzip.git'
+          git-url: 'https://gitlab.com/deb.sury.org/libzip.git'
       - librabbitmq:
           git-url: 'git://anonscm.debian.org/collab-maint/librabbitmq.git'
       - libsass:
           git-url: 'git://anonscm.debian.org/pkg-sass/libsass.git'
+      - argon2:
+          git-url: 'https://salsa.debian.org/debian/argon2.git'
+          branches: !!python/tuple [debian/sid]
+      - openssl:
+          git-url: 'https://salsa.debian.org/ondrej/openssl.git'
+          distributions: !!python/tuple [jessie]
+          branches: !!python/tuple [master-1.0]
+      - libsodium:
+          git-url: 'https://gitlab.com/deb.sury.org/libsodium.git'
       - sassphp:
           git-url: 'https://github.com/oerdnj/sassphp.git'
           branches: !!python/tuple [debian]
       - pcre3:
-          git-url: 'https://github.com/oerdnj/pcre3.git'
-          distributions: !!python/tuple [jessie]
+          git-url: 'https://gitlab.com/deb.sury.org/pcre3.git'
       - php5.6:
-          git-url: 'https://gitlab.sury.org/pkg-php/php.git'
+          git-url: 'https://salsa.debian.org/php-team/php.git'
           branches: !!python/tuple [master-5.6]
       - php7.0:
-          git-url: 'https://gitlab.sury.org/pkg-php/php.git'
+          git-url: 'https://salsa.debian.org/php-team/php.git'
           branches: !!python/tuple [master-7.0]
       - php7.1:
-          git-url: 'https://gitlab.sury.org/pkg-php/php.git'
+          git-url: 'https://salsa.debian.org/php-team/php.git'
           branches: !!python/tuple [master-7.1]
+      - php7.2:
+          git-url: 'https://salsa.debian.org/php-team/php.git'
+          branches: !!python/tuple [master-7.2]
+      - php7.3:
+          git-url: 'https://salsa.debian.org/php-team/php.git'
+          branches: !!python/tuple [master-7.3]
       - php-defaults:
-          git-url: 'https://gitlab.sury.org/pkg-php/php-defaults.git'
+          git-url: 'https://salsa.debian.org/php-team/php-defaults.git'
           architectures: !!python/tuple [amd64]
           branches: !!python/tuple [master-coinst]
       - dh-php:
-          git-url: 'https://gitlab.sury.org/pkg-php/dh-php.git'
+          git-url: 'https://salsa.debian.org/php-team/dh-php.git'
           architectures: !!python/tuple [amd64]
       - pkg-php-tools:
           architectures: !!python/tuple [amd64]
@@ -50,18 +62,21 @@
       - php-gmagick
       - php-igbinary
       - php-imagick
+      - php-lua
       - php-mailparse
       - php-memcache
       - php-memcached
       - php-mongo
       - php-mongodb
       - php-msgpack
+      - php-phalcon
       - php-oauth
       - php-radius
       - php-redis
       - php-rrd
       - php-stomp
       - php-smbclient
+      - php-sodium
       - php-solr
       - php-ssh2
       - php-uploadprogress
@@ -90,11 +105,14 @@
     repo: php
     architectures: !!python/tuple [armhf]
     deb_build_options: nocheck noautodbgsym
+    deb_build_profiles: nocheck
     <<: *php_packages
 
 - project:
     name: php-arm64
     repo: php
     architectures: !!python/tuple [arm64]
+#    distributions: !!python/tuple [stretch]
     deb_build_options: nocheck noautodbgsym
+    deb_build_profiles: nocheck
     <<: *php_packages

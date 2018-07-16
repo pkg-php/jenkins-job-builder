@@ -5,4 +5,4 @@
     architectures: !!python/tuple [amd64, i386]
     package:
       - samba:
-          git-url: 'https://ondrej@gitlab.sury.org/pkg-samba/samba.git'
+          git-url: 'https://gitlab.com/deb.sury.org/samba.git'

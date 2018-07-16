@@ -1,0 +1,12 @@
+- kea_packages: &kea_packages
+    <<: *defaults
+    name: kea_packages
+    package:
+      - kea:
+          git-url: 'https://salsa.debian.org/debian/isc-kea.git'
+          branches: !!python/tuple [master]
+
+- project:
+    name: kea
+    architectures: !!python/tuple [amd64, i386]
+    <<: *kea_packages
