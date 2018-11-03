@@ -2,16 +2,17 @@
     <<: *defaults
     git-url: 'https://salsa.debian.org/php-team/pecl/{package}.git'
     package:
-      - cmake:
-          git-url: 'https://github.com/oerdnj/cmake.git'
       - pcre2:
           git-url: 'https://salsa.debian.org/debian/pcre2.git'
       - tidy-html5:
           git-url: 'https://salsa.debian.org/debian/tidy-html5.git'
+          branches: !!python/tuple [master-backports]
+      - libgd2:
+          git-url: 'https://salsa.debian.org/debian/libgd2.git'
       - libzip:
           git-url: 'https://gitlab.com/deb.sury.org/libzip.git'
       - librabbitmq:
-          git-url: 'git://anonscm.debian.org/collab-maint/librabbitmq.git'
+          git-url: 'https://salsa.debian.org/debian/librabbitmq.git'
       - libsass:
           git-url: 'git://anonscm.debian.org/pkg-sass/libsass.git'
       - argon2:
@@ -19,8 +20,8 @@
           branches: !!python/tuple [debian/sid]
       - openssl:
           git-url: 'https://salsa.debian.org/ondrej/openssl.git'
-          distributions: !!python/tuple [jessie]
-          branches: !!python/tuple [master-1.0]
+          distributions: !!python/tuple [jessie, stretch]
+          branches: !!python/tuple [debian/unstable]
       - libsodium:
           git-url: 'https://gitlab.com/deb.sury.org/libsodium.git'
       - sassphp:
@@ -69,6 +70,7 @@
       - php-mongo
       - php-mongodb
       - php-msgpack
+      - php-pinba
       - php-phalcon
       - php-oauth
       - php-radius
@@ -93,26 +95,12 @@
       - php-pear:
           architectures: !!python/tuple [amd64]
           branches: !!python/tuple [debian/sid]
+          git-url: 'https://salsa.debian.org/php-team/pear/php-pear.git'
 
 - project:
     name: php
     repo: php
-    architectures: !!python/tuple [amd64, i386]
-    <<: *php_packages
-
-- project:
-    name: php-armhf
-    repo: php
-    architectures: !!python/tuple [armhf]
-    deb_build_options: nocheck noautodbgsym
-    deb_build_profiles: nocheck
-    <<: *php_packages
-
-- project:
-    name: php-arm64
-    repo: php
-    architectures: !!python/tuple [arm64]
-#    distributions: !!python/tuple [stretch]
-    deb_build_options: nocheck noautodbgsym
+    architectures: !!python/tuple [amd64, i386, armhf, arm64]
+    deb_build_options: nocheck
     deb_build_profiles: nocheck
     <<: *php_packages

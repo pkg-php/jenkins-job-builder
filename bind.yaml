@@ -5,6 +5,11 @@
       - bind:
           git-url: 'https://salsa.debian.org/dns-team/bind9.git'
           branches: !!python/tuple [master-9.12-backports]
+      - ruby-ronn:
+          git-url: 'https://salsa.debian.org/ondrej/ruby-ronn'
+          architectures: !!python/tuple [amd64]
+      - libidn2:
+          git-url: 'https://salsa.debian.org/debian/libidn2.git'
       - lmdb:
           git-url: 'https://salsa.debian.org/debian/lmdb'
       - fstrm:
@@ -18,8 +23,8 @@
 
 - project:
     name: bind
-    architectures: !!python/tuple [amd64, i386]
-    distributions: !!python/tuple [jessie, stretch, buster]
+    architectures: !!python/tuple [amd64, i386, armhf, arm64]
+    distributions: !!python/tuple [jessie, stretch]
     <<: *bind_packages
 
 - bind_esv_packages: &bind_esv_packages
@@ -29,6 +34,11 @@
       - bind:
           git-url: 'https://salsa.debian.org/dns-team/bind9.git'
           branches: !!python/tuple [master-backports]
+      - ruby-ronn:
+          git-url: 'https://salsa.debian.org/ondrej/ruby-ronn'
+          architectures: !!python/tuple [amd64]
+      - libidn2:
+          git-url: 'https://salsa.debian.org/debian/libidn2.git'
       - lmdb:
           git-url: 'https://salsa.debian.org/debian/lmdb'
       - fstrm:
@@ -43,8 +53,8 @@
 - project:
     name: bind-esv
     repo: bind-esv
-    architectures: !!python/tuple [amd64, i386]
-    distributions: !!python/tuple [jessie, stretch, buster]
+    architectures: !!python/tuple [amd64, i386, armhf, arm64]
+    distributions: !!python/tuple [jessie, stretch]
     <<: *bind_esv_packages
 
 - bind_dev_packages: &bind_dev_packages
@@ -54,6 +64,11 @@
       - bind:
           git-url: 'https://salsa.debian.org/dns-team/bind.git'
           branches: !!python/tuple [master-backports]
+      - ruby-ronn:
+          git-url: 'https://salsa.debian.org/ondrej/ruby-ronn'
+          architectures: !!python/tuple [amd64]
+      - libidn2:
+          git-url: 'https://salsa.debian.org/debian/libidn2.git'
       - lmdb:
           git-url: 'https://salsa.debian.org/debian/lmdb'
       - fstrm:
@@ -68,6 +83,6 @@
 - project:
     name: bind-dev
     repo: bind-dev
-    architectures: !!python/tuple [amd64, i386]
-    distributions: !!python/tuple [jessie, stretch, buster]
+    architectures: !!python/tuple [amd64, i386, armhf, arm64]
+    distributions: !!python/tuple [jessie, stretch]
     <<: *bind_dev_packages

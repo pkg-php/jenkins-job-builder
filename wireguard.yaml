@@ -1,0 +1,9 @@
+- project:
+    <<: *defaults
+    name: wireguard
+    repo: wireguard
+    architectures: !!python/tuple [amd64, i386, armhf, arm64]
+    package:
+      - wireguard:
+          git-url: 'https://salsa.debian.org/debian/wireguard.git'
+          branches: !!python/tuple [debian/master-backports]
