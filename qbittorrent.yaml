@@ -1,14 +1,17 @@
-- project:
+- qbittorrent_packages: &qbittorrent_packages
     <<: *defaults
-    name: qbittorrent
+    name: 'package_defaults'
     repo: qbittorrent
-    distributions: !!python/tuple [stretch]
-    architectures: !!python/tuple [amd64]
+    repository_extra: "deb http://ftp.debian.org/debian $distribution-backports main"
     sequential: false
     package:
       - libtorrent-rasterbar:
-          git-url: 'https://anonscm.debian.org/git/collab-maint/libtorrent-rasterbar.git'
-#          branches: !!python/tuple [master-stretch]
+          git-url: 'https://salsa.debian.org/debian/libtorrent-rasterbar.git'
       - qbittorrent:
-          git-url: 'https://anonscm.debian.org/git/collab-maint/qbittorrent.git'
-#          branches: !!python/tuple [master-stretch]
+          git-url: 'https://salsa.debian.org/debian/qbittorrent.git'
+
+- project:
+    name: qbittorrent
+    distributions: !!python/tuple [stretch]
+    architectures: !!python/tuple [amd64]
+    <<: *qbittorrent_packages

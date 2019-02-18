@@ -2,6 +2,10 @@
     <<: *defaults
     git-url: 'https://salsa.debian.org/php-team/pecl/{package}.git'
     package:
+      - python-boto:
+          git-url: 'https://salsa.debian.org/ondrej/python-boto.git'
+          architectures: !!python/tuple [amd64]
+#          distributions: !!python/tuple [stretch, buster]
       - pcre2:
           git-url: 'https://salsa.debian.org/debian/pcre2.git'
       - tidy-html5:
@@ -10,7 +14,8 @@
       - libgd2:
           git-url: 'https://salsa.debian.org/debian/libgd2.git'
       - libzip:
-          git-url: 'https://gitlab.com/deb.sury.org/libzip.git'
+          git-url: 'https://salsa.debian.org/debian/libzip.git'
+          branches: !!python/tuple [master-backports]
       - librabbitmq:
           git-url: 'https://salsa.debian.org/debian/librabbitmq.git'
       - libsass:
@@ -18,23 +23,27 @@
       - argon2:
           git-url: 'https://salsa.debian.org/debian/argon2.git'
           branches: !!python/tuple [debian/sid]
+      - python-httplib2:
+          git-url: 'https://salsa.debian.org/ondrej/python-httplib2.git'
+          architectures: !!python/tuple [amd64]
       - openssl:
           git-url: 'https://salsa.debian.org/ondrej/openssl.git'
-          distributions: !!python/tuple [jessie, stretch]
           branches: !!python/tuple [debian/unstable]
       - libsodium:
-          git-url: 'https://gitlab.com/deb.sury.org/libsodium.git'
+          git-url: 'https://salsa.debian.org/ondrej/libsodium.git'
       - sassphp:
           git-url: 'https://github.com/oerdnj/sassphp.git'
           branches: !!python/tuple [debian]
       - pcre3:
-          git-url: 'https://gitlab.com/deb.sury.org/pcre3.git'
+          git-url: 'https://salsa.debian.org/ondrej/pcre3.git'
       - php5.6:
           git-url: 'https://salsa.debian.org/php-team/php.git'
           branches: !!python/tuple [master-5.6]
+          distributions: !!python/tuple [jessie, stretch]
       - php7.0:
           git-url: 'https://salsa.debian.org/php-team/php.git'
           branches: !!python/tuple [master-7.0]
+          distributions: !!python/tuple [jessie, stretch]
       - php7.1:
           git-url: 'https://salsa.debian.org/php-team/php.git'
           branches: !!python/tuple [master-7.1]
@@ -44,10 +53,16 @@
       - php7.3:
           git-url: 'https://salsa.debian.org/php-team/php.git'
           branches: !!python/tuple [master-7.3]
+      - php-defaults-buster:
+          git-url: 'https://salsa.debian.org/php-team/php-defaults.git'
+          architectures: !!python/tuple [amd64]
+          branches: !!python/tuple [master-coinst-buster]
+          distributions: !!python/tuple [buster]
       - php-defaults:
           git-url: 'https://salsa.debian.org/php-team/php-defaults.git'
           architectures: !!python/tuple [amd64]
           branches: !!python/tuple [master-coinst]
+          distributions: !!python/tuple [jessie, stretch]
       - dh-php:
           git-url: 'https://salsa.debian.org/php-team/dh-php.git'
           architectures: !!python/tuple [amd64]
@@ -61,7 +76,8 @@
       - php-gearman
       - php-geoip
       - php-gmagick
-      - php-igbinary
+      - php-igbinary:
+          branches: !!python/tuple [master-backports]
       - php-imagick
       - php-lua
       - php-mailparse
@@ -69,7 +85,8 @@
       - php-memcached
       - php-mongo
       - php-mongodb
-      - php-msgpack
+      - php-msgpack:
+          branches: !!python/tuple [master-backports]
       - php-pinba
       - php-phalcon
       - php-oauth
@@ -101,6 +118,7 @@
     name: php
     repo: php
     architectures: !!python/tuple [amd64, i386, armhf, arm64]
+    distributions: !!python/tuple [jessie, stretch, buster]
     deb_build_options: nocheck
     deb_build_profiles: nocheck
     <<: *php_packages

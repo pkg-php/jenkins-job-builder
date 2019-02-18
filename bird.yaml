@@ -4,9 +4,12 @@
     package:
       - bird:
           git-url: 'https://salsa.debian.org/debian/bird.git'
+      - bird2:
+          git-url: 'https://salsa.debian.org/debian/bird2.git'
+          distributions: !!python/tuple [sid]
 
 - project:
     name: bird
     architectures: !!python/tuple [amd64, i386]
-    distributions: !!python/tuple [wheezy, jessie, stretch]
+    distributions: !!python/tuple [stretch]
     <<: *bird_packages

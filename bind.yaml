@@ -5,6 +5,7 @@
       - bind:
           git-url: 'https://salsa.debian.org/dns-team/bind9.git'
           branches: !!python/tuple [master-9.12-backports]
+          distributions: !!python/tuple [stretch, buster]
       - ruby-ronn:
           git-url: 'https://salsa.debian.org/ondrej/ruby-ronn'
           architectures: !!python/tuple [amd64]
@@ -24,7 +25,7 @@
 - project:
     name: bind
     architectures: !!python/tuple [amd64, i386, armhf, arm64]
-    distributions: !!python/tuple [jessie, stretch]
+    distributions: !!python/tuple [stretch]
     <<: *bind_packages
 
 - bind_esv_packages: &bind_esv_packages
@@ -34,6 +35,7 @@
       - bind:
           git-url: 'https://salsa.debian.org/dns-team/bind9.git'
           branches: !!python/tuple [master-backports]
+          distributions: !!python/tuple [stretch, buster]
       - ruby-ronn:
           git-url: 'https://salsa.debian.org/ondrej/ruby-ronn'
           architectures: !!python/tuple [amd64]
@@ -54,16 +56,17 @@
     name: bind-esv
     repo: bind-esv
     architectures: !!python/tuple [amd64, i386, armhf, arm64]
-    distributions: !!python/tuple [jessie, stretch]
+    distributions: !!python/tuple [stretch]
     <<: *bind_esv_packages
 
 - bind_dev_packages: &bind_dev_packages
     <<: *defaults
     name: bind_packages
     package:
-      - bind:
-          git-url: 'https://salsa.debian.org/dns-team/bind.git'
-          branches: !!python/tuple [master-backports]
+      - bind9:
+          git-url: 'https://salsa.debian.org/dns-team/bind9.git'
+          branches: !!python/tuple [master-9.13-backports]
+          distributions: !!python/tuple [stretch]
       - ruby-ronn:
           git-url: 'https://salsa.debian.org/ondrej/ruby-ronn'
           architectures: !!python/tuple [amd64]
@@ -84,5 +87,5 @@
     name: bind-dev
     repo: bind-dev
     architectures: !!python/tuple [amd64, i386, armhf, arm64]
-    distributions: !!python/tuple [jessie, stretch]
+    distributions: !!python/tuple [stretch]
     <<: *bind_dev_packages

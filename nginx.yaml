@@ -1,33 +1,21 @@
 - project:
     <<: *defaults
-    architectures: !!python/tuple [amd64, i386]
     name: nginx-mainline
     package:
       - openssl:
           git-url: 'https://salsa.debian.org/ondrej/openssl.git'
-          distributions: !!python/tuple [jessie]
-          branches: !!python/tuple [master-1.1]
-      - hiredis:
-          git-url: 'https://salsa.debian.org/ondrej/hiredis.git'
-          distributions: !!python/tuple [jessie]
-          branches: !!python/tuple [master]
+          branches: !!python/tuple [debian/unstable]
       - nginx:
           git-url: 'https://salsa.debian.org/ondrej/nginx.git'
-          branches: !!python/tuple [master]
+          branches: !!python/tuple [master-1.15]
 
 - project:
     <<: *defaults
-    architectures: !!python/tuple [amd64, i386]
     name: nginx
     package:
       - openssl:
           git-url: 'https://salsa.debian.org/ondrej/openssl.git'
-          distributions: !!python/tuple [jessie]
-          branches: !!python/tuple [master-1.1]
-      - hiredis:
-          git-url: 'https://salsa.debian.org/ondrej/hiredis.git'
-          distributions: !!python/tuple [jessie]
-          branches: !!python/tuple [master]
+          branches: !!python/tuple [debian/unstable]
       - nginx:
           git-url: 'https://salsa.debian.org/ondrej/nginx.git'
           branches: !!python/tuple [master-1.14]
