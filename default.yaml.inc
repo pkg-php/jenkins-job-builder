@@ -3,7 +3,7 @@
 - defaults: &defaults
     name: 'defaults'
     repo: '{name}'
-    distributions: !!python/tuple [stretch]
+    distributions: !!python/tuple [stretch, buster]
     architectures: !!python/tuple [amd64, i386, armhf, arm64]
 #    architectures: !!python/tuple [amd64, i386]
     deb_build_options: nocheck

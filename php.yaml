@@ -53,16 +53,10 @@
       - php7.3:
           git-url: 'https://salsa.debian.org/php-team/php.git'
           branches: !!python/tuple [master-7.3]
-      - php-defaults-buster:
-          git-url: 'https://salsa.debian.org/php-team/php-defaults.git'
-          architectures: !!python/tuple [amd64]
-          branches: !!python/tuple [master-coinst-buster]
-          distributions: !!python/tuple [buster]
       - php-defaults:
           git-url: 'https://salsa.debian.org/php-team/php-defaults.git'
           architectures: !!python/tuple [amd64]
           branches: !!python/tuple [master-coinst]
-          distributions: !!python/tuple [jessie, stretch]
       - dh-php:
           git-url: 'https://salsa.debian.org/php-team/dh-php.git'
           architectures: !!python/tuple [amd64]

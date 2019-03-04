@@ -84,6 +84,9 @@
           export REPOSITORY=/srv/repository/{repo}
           echo "Listing packages inside the {repo} repository:"
           /usr/bin/repository_checker --list-repos $distribution
+      - shell: |
+          echo "Syncing the packages to the CDN"
+          rsync -Lrtvz --delete --chmod=D2755,F644 /var/www/repository/{repo}/ oerdnj@rsync.keycdn.com:deb/{repo}/
 #      - shell: |
 #          mkdir -p report
 #          /usr/bin/lintian-junit-report *.dsc > report/lintian.xml

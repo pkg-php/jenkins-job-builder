@@ -5,6 +5,7 @@
       - openssl:
           git-url: 'https://salsa.debian.org/ondrej/openssl.git'
           branches: !!python/tuple [debian/unstable]
+          distributions: !!python/tuple [stretch]
       - nginx:
           git-url: 'https://salsa.debian.org/ondrej/nginx.git'
           branches: !!python/tuple [master-1.15]
@@ -16,6 +17,7 @@
       - openssl:
           git-url: 'https://salsa.debian.org/ondrej/openssl.git'
           branches: !!python/tuple [debian/unstable]
+          distributions: !!python/tuple [stretch]
       - nginx:
           git-url: 'https://salsa.debian.org/ondrej/nginx.git'
           branches: !!python/tuple [master-1.14]
