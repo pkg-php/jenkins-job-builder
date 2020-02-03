@@ -10,4 +10,4 @@ export TMPDIR := $(shell mktemp -d -t jjb-XXXXXX)
 	echo >> $(TMPDIR)/$*.yaml
 	cat job-template.yaml.inc >> $(TMPDIR)/$*.yaml
 	jenkins-jobs --conf ~/.config/jenkins_jobs/jenkins_jobs.ini update $(TMPDIR)/$*.yaml
-	rm -f $(TMPDIR)/$*.yaml
+#	rm -f $(TMPDIR)/$*.yaml

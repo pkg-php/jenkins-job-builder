@@ -3,6 +3,9 @@
 - defaults: &defaults
     name: 'defaults'
     repo: '{name}'
+    cdn: 'deb'
+    cloudsmith_owner: 'deb-sury-org'
+    cloudsmith_repo: ''
     distributions: !!python/tuple [stretch, buster]
     architectures: !!python/tuple [amd64, i386, armhf, arm64]
 #    architectures: !!python/tuple [amd64, i386]

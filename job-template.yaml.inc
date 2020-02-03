@@ -22,7 +22,8 @@
       - shell: |
           rm -f ./* || true
       - shell: |
-          export distribution=${{distribution}}
+          export distribution=debian$(distro-info -r --series=${{distribution}})
+          export TIMESTAMP_FORMAT="%Y%m%d"
           /usr/bin/generate-git-snapshot
 #      - shell: |
 #          mkdir -p report
@@ -48,12 +49,15 @@
     description: |
       <p>Build Debian binary packages of {package}.<br />Do not edit this job through the web, it is generated via jenkins-job-builder!</p>
       <p>Usage instructions how to remotely access and use the repository can be found in the <a href="https://packages.sury.org/{repo}/">{repo} repository</a></p>
-      <p>Or if you really hate security or you just don't care about it:
+      <p>Or if you really hate security or you just do not care about it:
       <pre>
       curl -L https://packages.sury.org/{repo}/README.txt | bash -x
       </pre>
     execution-strategy:
       sequential: '{obj:sequential}'
+      touchstone:
+        expr: 'architecture == "amd64"'
+        result: 'stable'
     axes:
       - axis:
           type: user-defined
@@ -77,16 +81,15 @@
           export RELEASE_DISTRIBUTION=$distribution
           export DEB_BUILD_OPTIONS="{deb_build_options}"
           export DEB_BUILD_PROFILES="{deb_build_profiles}"
-          export REPOSITORY_EXTRA="{repository_extra}"
+          if [ "$release" != "sid" ]; then export REPOSITORY_EXTRA="{repository_extra}"; fi
           export REPOSITORY_EXTRA_KEYS="{repository_extra_keys}"
           /usr/bin/build-and-provide-package
+      - shell: |
+          /var/lib/jenkins/bin/sync-repository "{repo}"
       - shell: |
           export REPOSITORY=/srv/repository/{repo}
           echo "Listing packages inside the {repo} repository:"
           /usr/bin/repository_checker --list-repos $distribution
-      - shell: |
-          echo "Syncing the packages to the CDN"
-          rsync -Lrtvz --delete --chmod=D2755,F644 /var/www/repository/{repo}/ oerdnj@rsync.keycdn.com:deb/{repo}/
 #      - shell: |
 #          mkdir -p report
 #          /usr/bin/lintian-junit-report *.dsc > report/lintian.xml
