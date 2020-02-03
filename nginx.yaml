@@ -1,23 +1,27 @@
 - project:
     <<: *defaults
     name: nginx-mainline
+    architectures: !!python/tuple [amd64, i386]
+    distributions: !!python/tuple [jessie, stretch, buster]
+    cloudsmith_repo: 'nginx-mainline'
     package:
       - openssl:
           git-url: 'https://salsa.debian.org/ondrej/openssl.git'
           branches: !!python/tuple [debian/unstable]
-          distributions: !!python/tuple [stretch]
       - nginx:
           git-url: 'https://salsa.debian.org/ondrej/nginx.git'
-          branches: !!python/tuple [master-1.15]
+          branches: !!python/tuple [master-1.17]
 
 - project:
     <<: *defaults
     name: nginx
+    architectures: !!python/tuple [amd64, i386]
+    distributions: !!python/tuple [jessie, stretch, buster]
+    cloudsmith_repo: 'nginx-stable'
     package:
       - openssl:
           git-url: 'https://salsa.debian.org/ondrej/openssl.git'
           branches: !!python/tuple [debian/unstable]
-          distributions: !!python/tuple [stretch]
       - nginx:
           git-url: 'https://salsa.debian.org/ondrej/nginx.git'
-          branches: !!python/tuple [master-1.14]
+          branches: !!python/tuple [master-1.16]

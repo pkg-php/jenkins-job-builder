@@ -9,16 +9,17 @@
       - apr-util:
           git-url: 'https://salsa.debian.org/apache-team/apr-util.git'
       - brotli:
-          git-url: 'https://salsa.debian.org/debian/brotli.git'
+          git-url: 'https://salsa.debian.org/ondrej/brotli.git'
+          branches: !!python/tuple [deb.sury.org/master]
       - nghttp2:
           git-url: 'https://salsa.debian.org/ondrej/nghttp2.git'
-          branches: !!python/tuple [master-backports]
+          branches: !!python/tuple [deb.sury.org/master]
       - openssl:
           git-url: 'https://salsa.debian.org/ondrej/openssl.git'
           branches: !!python/tuple [debian/unstable]
 
 - project:
     name: apache2
-    distributions: !!python/tuple [stretch]
-    architectures: !!python/tuple [amd64]
+    distributions: !!python/tuple [stretch, buster]
+    architectures: !!python/tuple [amd64, i386]
     <<: *apache2_packages

@@ -12,6 +12,6 @@
 
 - project:
     name: qbittorrent
-    distributions: !!python/tuple [stretch]
+    distributions: !!python/tuple [stretch, buster]
     architectures: !!python/tuple [amd64]
     <<: *qbittorrent_packages

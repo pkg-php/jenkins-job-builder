@@ -1,0 +1,14 @@
+- coccinelle_packages: &coccinelle_packages
+    <<: *defaults
+    name: coccinelle_packages
+    repository_extra: "deb http://ftp.debian.org/debian $distribution-backports main"
+    package:
+      - coccinelle:
+          git-url: 'https://salsa.debian.org/ondrej/coccinelle.git'
+          branches: !!python/tuple [master]
+
+- project:
+    name: coccinelle
+    architectures: !!python/tuple [amd64]
+    distributions: !!python/tuple [buster, sid]
+    <<: *coccinelle_packages

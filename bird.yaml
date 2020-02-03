@@ -1,17 +1,17 @@
 - bird_packages: &bird_packages
     <<: *defaults
     name: bird_packages
-    repository_extra: "deb http://ftp.debian.org/debian $distribution-backports main"
+#    repository_extra: "deb http://archive.debian.org/debian $distribution-backports main"
     package:
       - bird:
           git-url: 'https://salsa.debian.org/debian/bird.git'
-          distributions: !!python/tuple [jessie, stretch]
+          distributions: !!python/tuple [jessie, stretch, buster]
       - bird2:
           git-url: 'https://salsa.debian.org/debian/bird2.git'
           branches: !!python/tuple [deb.sury.org/master]
-          distributions: !!python/tuple [stretch]
+          distributions: !!python/tuple [stretch, buster]
 
 - project:
     name: bird
-    architectures: !!python/tuple [amd64, i386]
+    architectures: !!python/tuple [amd64, i386, armhf, arm64]
     <<: *bird_packages

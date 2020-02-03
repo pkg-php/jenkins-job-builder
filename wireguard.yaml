@@ -6,4 +6,4 @@
     package:
       - wireguard:
           git-url: 'https://salsa.debian.org/debian/wireguard.git'
-          branches: !!python/tuple [debian/master-backports]
+          branches: !!python/tuple [deb.sury.org/master]

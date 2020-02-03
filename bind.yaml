@@ -1,16 +1,20 @@
 - bind_packages: &bind_packages
     <<: *defaults
     name: bind_packages
+    cdn: bind
     package:
       - bind9:
           git-url: 'https://salsa.debian.org/dns-team/bind9.git'
-          branches: !!python/tuple [isc/backports/9.12]
+          branches: !!python/tuple [isc/backports/9.14]
           distributions: !!python/tuple [stretch, buster]
       - ruby-ronn:
           git-url: 'https://salsa.debian.org/ondrej/ruby-ronn'
           architectures: !!python/tuple [amd64]
       - libidn2:
           git-url: 'https://salsa.debian.org/debian/libidn2.git'
+      - libuv1:
+          git-url: 'https://salsa.debian.org/ondrej/libuv1.git'
+          branches: !!python/tuple [deb.sury.org/master]
       - lmdb:
           git-url: 'https://salsa.debian.org/debian/lmdb'
       - fstrm:
@@ -21,9 +25,14 @@
           git-url: 'https://salsa.debian.org/ondrej/protobuf'
       - googletest:
           git-url: 'https://salsa.debian.org/ondrej/googletest.git'
+      - libmaxminddb:
+          git-url: 'https://salsa.debian.org/debian/libmaxminddb.git'
+          branches: !!python/tuple [debian]
 
 - project:
     name: bind
+#    cloudsmith_owner: isc
+#    cloudsmith_repo: bind
     architectures: !!python/tuple [amd64, i386, armhf, arm64]
     distributions: !!python/tuple [stretch]
     <<: *bind_packages
@@ -41,6 +50,9 @@
           architectures: !!python/tuple [amd64]
       - libidn2:
           git-url: 'https://salsa.debian.org/debian/libidn2.git'
+      - libuv1:
+          git-url: 'https://salsa.debian.org/ondrej/libuv1.git'
+          branches: !!python/tuple [deb.sury.org/master]
       - lmdb:
           git-url: 'https://salsa.debian.org/debian/lmdb'
       - fstrm:
@@ -51,10 +63,15 @@
           git-url: 'https://salsa.debian.org/ondrej/protobuf'
       - googletest:
           git-url: 'https://salsa.debian.org/ondrej/googletest.git'
+      - libmaxminddb:
+          git-url: 'https://salsa.debian.org/debian/libmaxminddb.git'
+          branches: !!python/tuple [debian]
 
 - project:
     name: bind-esv
     repo: bind-esv
+#    cloudsmith_owner: isc
+#    cloudsmith_repo: bind-esv
     architectures: !!python/tuple [amd64, i386, armhf, arm64]
     distributions: !!python/tuple [stretch]
     <<: *bind_esv_packages
@@ -65,13 +82,16 @@
     package:
       - bind9:
           git-url: 'https://salsa.debian.org/dns-team/bind9.git'
-          branches: !!python/tuple [isc/backports/9.14]
+          branches: !!python/tuple [isc/backports/9.15]
           distributions: !!python/tuple [stretch, buster]
       - ruby-ronn:
           git-url: 'https://salsa.debian.org/ondrej/ruby-ronn'
           architectures: !!python/tuple [amd64]
       - libidn2:
           git-url: 'https://salsa.debian.org/debian/libidn2.git'
+      - libuv1:
+          git-url: 'https://salsa.debian.org/ondrej/libuv1.git'
+          branches: !!python/tuple [deb.sury.org/master]
       - lmdb:
           git-url: 'https://salsa.debian.org/debian/lmdb'
       - fstrm:
@@ -82,10 +102,15 @@
           git-url: 'https://salsa.debian.org/ondrej/protobuf'
       - googletest:
           git-url: 'https://salsa.debian.org/ondrej/googletest.git'
+      - libmaxminddb:
+          git-url: 'https://salsa.debian.org/debian/libmaxminddb.git'
+          branches: !!python/tuple [debian]
 
 - project:
     name: bind-dev
     repo: bind-dev
+#    cloudsmith_owner: isc
+#    cloudsmith_repo: bind-dev
     architectures: !!python/tuple [amd64, i386, armhf, arm64]
-    distributions: !!python/tuple [stretch]
+    distributions: !!python/tuple [stretch, buster]
     <<: *bind_dev_packages
