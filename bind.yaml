@@ -5,7 +5,7 @@
     package:
       - bind9:
           git-url: 'https://salsa.debian.org/dns-team/bind9.git'
-          branches: !!python/tuple [isc/backports/9.14]
+          branches: !!python/tuple [isc/backports/9.16]
           distributions: !!python/tuple [stretch, buster]
       - ruby-ronn:
           git-url: 'https://salsa.debian.org/ondrej/ruby-ronn'
@@ -82,7 +82,7 @@
     package:
       - bind9:
           git-url: 'https://salsa.debian.org/dns-team/bind9.git'
-          branches: !!python/tuple [isc/backports/9.15]
+          branches: !!python/tuple [isc/backports/9.17]
           distributions: !!python/tuple [stretch, buster]
       - ruby-ronn:
           git-url: 'https://salsa.debian.org/ondrej/ruby-ronn'

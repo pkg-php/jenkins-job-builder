@@ -94,6 +94,7 @@
       - php-pinba
       - php-phalcon3
       - php-phalcon4
+      - php-ps
       - php-psr
       - php-radius
       - php-redis
@@ -112,6 +113,9 @@
       - php-propro
       - php-raphf
       - php-pecl-http
+      - php-xhprof
+      - libvirt-php
+      - sassphp
       - tideways
       - xcache
       - xdebug:
@@ -124,8 +128,6 @@
 - project:
     name: php
     repo: php
-    cloudsmith_owner: deb-sury-org
-    cloudsmith_repo: php
     architectures: !!python/tuple [amd64, i386, armhf, arm64]
     distributions: !!python/tuple [jessie, stretch, buster]
     deb_build_options: nocheck
