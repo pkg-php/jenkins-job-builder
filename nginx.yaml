@@ -1,7 +1,6 @@
 - project:
     <<: *defaults
     name: nginx-mainline
-    architectures: !!python/tuple [amd64, i386]
     distributions: !!python/tuple [jessie, stretch, buster]
     cloudsmith_repo: 'nginx-mainline'
     package:
@@ -15,7 +14,6 @@
 - project:
     <<: *defaults
     name: nginx
-    architectures: !!python/tuple [amd64, i386]
     distributions: !!python/tuple [jessie, stretch, buster]
     cloudsmith_repo: 'nginx-stable'
     package:
@@ -24,4 +22,4 @@
           branches: !!python/tuple [debian/unstable]
       - nginx:
           git-url: 'https://salsa.debian.org/ondrej/nginx.git'
-          branches: !!python/tuple [master-1.16]
+          branches: !!python/tuple [master-1.18]

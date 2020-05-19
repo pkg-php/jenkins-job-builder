@@ -4,10 +4,12 @@
     package:
       - apache2:
           git-url: 'https://salsa.debian.org/apache-team/apache2.git'
+          branches: !!python/tuple [deb.sury.org/master]
       - apr:
           git-url: 'https://salsa.debian.org/apache-team/apr.git'
       - apr-util:
           git-url: 'https://salsa.debian.org/apache-team/apr-util.git'
+          branches: !!python/tuple [deb.sury.org/master]
       - brotli:
           git-url: 'https://salsa.debian.org/ondrej/brotli.git'
           branches: !!python/tuple [deb.sury.org/master]
@@ -21,5 +23,5 @@
 - project:
     name: apache2
     distributions: !!python/tuple [stretch, buster]
-    architectures: !!python/tuple [amd64, i386]
+    architectures: !!python/tuple [amd64, i386, armhf, arm64]
     <<: *apache2_packages

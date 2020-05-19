@@ -1,0 +1,17 @@
+- lmdb_packages: &lmdb_packages
+    <<: *defaults
+    name: lmdb_packages
+    repository_extra: "deb http://ftp.debian.org/debian $distribution-backports main"
+    package:
+      - lmdb:
+          git-url: 'https://salsa.debian.org/debian/lmdb.git'
+          branches: !!python/tuple [master]
+      - py-lmdb:
+          git-url: 'https://salsa.debian.org/ondrej/py-lmdb.git'
+          branches: !!python/tuple [debian/sid]
+
+- project:
+    name: lmdb
+    architectures: !!python/tuple [amd64]
+    distributions: !!python/tuple [buster]
+    <<: *lmdb_packages

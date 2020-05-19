@@ -1,0 +1,14 @@
+- cppcheck_packages: &cppcheck_packages
+    <<: *defaults
+    name: cppcheck_packages
+    repository_extra: "deb http://ftp.debian.org/debian $distribution-backports main"
+    package:
+      - cppcheck:
+          git-url: 'https://salsa.debian.org/ondrej/cppcheck.git'
+          branches: !!python/tuple [master]
+
+- project:
+    name: cppcheck
+    architectures: !!python/tuple [amd64]
+    distributions: !!python/tuple [buster]
+    <<: *cppcheck_packages

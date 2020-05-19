@@ -1,0 +1,17 @@
+- softhsm2_packages: &softhsm2_packages
+    <<: *defaults
+    name: softhsm2_packages
+    repository_extra: "deb http://ftp.debian.org/debian $distribution-backports main"
+    package:
+      - softhsm2:
+          git-url: 'https://salsa.debian.org/debian/softhsm2.git'
+          branches: !!python/tuple [master]
+      - openssl:
+          git-url: 'https://salsa.debian.org/ondrej/openssl.git'
+          branches: !!python/tuple [debian/unstable]
+
+- project:
+    name: softhsm2
+    architectures: !!python/tuple [amd64]
+    distributions: !!python/tuple [stretch, buster]
+    <<: *softhsm2_packages
