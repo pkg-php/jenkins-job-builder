@@ -46,22 +46,22 @@
           git-url: 'https://salsa.debian.org/ondrej/pcre3.git'
       - php5.6:
           git-url: 'https://salsa.debian.org/php-team/php.git'
-          branches: !!python/tuple [master-5.6]
+          branches: !!python/tuple [debian/main/5.6]
       - php7.0:
           git-url: 'https://salsa.debian.org/php-team/php.git'
-          branches: !!python/tuple [master-7.0]
+          branches: !!python/tuple [debian/main/7.0]
       - php7.1:
           git-url: 'https://salsa.debian.org/php-team/php.git'
-          branches: !!python/tuple [master-7.1]
+          branches: !!python/tuple [debian/main/7.1]
       - php7.2:
           git-url: 'https://salsa.debian.org/php-team/php.git'
-          branches: !!python/tuple [master-7.2]
+          branches: !!python/tuple [debian/main/7.2]
       - php7.3:
           git-url: 'https://salsa.debian.org/php-team/php.git'
-          branches: !!python/tuple [master-7.3]
+          branches: !!python/tuple [debian/main/7.3]
       - php7.4:
           git-url: 'https://salsa.debian.org/php-team/php.git'
-          branches: !!python/tuple [master-7.4]
+          branches: !!python/tuple [debian/main/7.4]
       - php-defaults:
           git-url: 'https://salsa.debian.org/php-team/php-defaults.git'
           branches: !!python/tuple [deb.sury.org/master]
