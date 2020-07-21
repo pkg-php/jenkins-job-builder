@@ -9,7 +9,7 @@
       - ruby-ronn:
           git-url: 'https://salsa.debian.org/ondrej/ruby-ronn'
           architectures: !!python/tuple [amd64]
-          distributions: !!python/tuple [jessie, stretch]
+          distributions: !!python/tuple [stretch]
       - pcre2:
           git-url: 'https://salsa.debian.org/ondrej/pcre2.git'
       - tidy-html5:
@@ -128,7 +128,7 @@
     name: php
     repo: php
     architectures: !!python/tuple [amd64, i386, armhf, arm64]
-    distributions: !!python/tuple [jessie, stretch, buster]
+    distributions: !!python/tuple [stretch, buster]
     deb_build_options: nocheck
     deb_build_profiles: nocheck
     <<: *php_packages

@@ -1,7 +1,7 @@
 - project:
     <<: *defaults
     name: frr
-    distributions: !!python/tuple [jessie, stretch, buster]
+    distributions: !!python/tuple [stretch, buster]
     package:
       - libyang:
           git-url: 'https://github.com/CESNET/libyang.git'

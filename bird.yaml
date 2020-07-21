@@ -5,7 +5,7 @@
     package:
       - bird:
           git-url: 'https://salsa.debian.org/debian/bird.git'
-          distributions: !!python/tuple [jessie, stretch, buster]
+          distributions: !!python/tuple [stretch, buster]
       - bird2:
           git-url: 'https://salsa.debian.org/debian/bird2.git'
           branches: !!python/tuple [deb.sury.org/master]

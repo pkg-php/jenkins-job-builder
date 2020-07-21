@@ -5,7 +5,7 @@
     package:
       - cppcheck:
           git-url: 'https://salsa.debian.org/ondrej/cppcheck.git'
-          branches: !!python/tuple [master]
+          branches: !!python/tuple [main]
 
 - project:
     name: cppcheck
