@@ -1,12 +1,15 @@
 - project:
     <<: *defaults
     name: nginx-mainline
-    distributions: !!python/tuple [stretch, buster]
+    distributions: !!python/tuple [stretch, buster, bullseye]
     cloudsmith_repo: 'nginx-mainline'
     package:
-      - openssl:
-          git-url: 'https://salsa.debian.org/ondrej/openssl.git'
-          branches: !!python/tuple [debian/unstable]
+      - brotli:
+          git-url: 'https://salsa.debian.org/debian/brotli.git'
+          branches: !!python/tuple [deb.sury.org/main]
+      - luajit:
+          git-url: 'https://salsa.debian.org/lua-team/luajit.git'
+          branches: !!python/tuple [debian/bullseye]
       - nginx:
           git-url: 'https://salsa.debian.org/ondrej/nginx.git'
           branches: !!python/tuple [main-1.19]
@@ -14,12 +17,15 @@
 - project:
     <<: *defaults
     name: nginx
-    distributions: !!python/tuple [stretch, buster]
+    distributions: !!python/tuple [stretch, buster, bullseye]
     cloudsmith_repo: 'nginx-stable'
     package:
-      - openssl:
-          git-url: 'https://salsa.debian.org/ondrej/openssl.git'
-          branches: !!python/tuple [debian/unstable]
+      - brotli:
+          git-url: 'https://salsa.debian.org/debian/brotli.git'
+          branches: !!python/tuple [deb.sury.org/main]
+      - luajit:
+          git-url: 'https://salsa.debian.org/lua-team/luajit.git'
+          branches: !!python/tuple [debian/bullseye]
       - nginx:
           git-url: 'https://salsa.debian.org/ondrej/nginx.git'
           branches: !!python/tuple [main-1.18]

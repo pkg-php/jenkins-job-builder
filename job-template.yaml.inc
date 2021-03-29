@@ -30,7 +30,7 @@
 #          /usr/bin/lintian-junit-report *.dsc > report/lintian.xml
     publishers:
       - archive:
-          artifacts: '*.gz,*.bz2,*.xz,*.deb,*.dsc,*.git,*.changes,lintian.txt'
+          artifacts: '*.gz,*.gz.asc,*.bz2,*.bz2.asc,*.xz,*.xz.asc,*.deb,*.dsc,*.git,*.changes,lintian.txt'
       - trigger:
           project: '{name}_{package}-binaries'
 #      - junit:
@@ -54,6 +54,8 @@
       curl -L https://packages.sury.org/{repo}/README.txt | bash -x
       </pre>
     execution-strategy:
+      combination-filter: |
+        (architecture == "amd64" && node == "amd64") || (architecture == "i386" && node == "i386") || (architecture == "armhf" && node == "armhf") || (architecture == "arm64" && node == "arm64")
       sequential: '{obj:sequential}'
       touchstone:
         expr: 'architecture == "amd64"'
@@ -67,6 +69,14 @@
           type: user-defined
           name: distribution
           values: '{obj:distributions}'
+      - axis:
+          type: slave
+          name: node
+          values:
+           - amd64
+           - i386
+           - armhf
+           - arm64
     builders:
       - copyartifact:
           project: '{name}_{package}-source/distribution=${{distribution}}'
@@ -95,7 +105,7 @@
 #          /usr/bin/lintian-junit-report *.dsc > report/lintian.xml
     publishers:
       - archive:
-          artifacts: '*.gz,*.bz2,*.xz,*.deb,*.dsc,*.git,*.changes,lintian.txt'
+          artifacts: '*.gz,*.gz.asc,*.bz2,*.bz2.asc,*.xz,*.xz.asc,*.deb,*.dsc,*.git,*.changes,lintian.txt'
 #      - junit:
 #          results: '**/lintian.xml'
 #          keep-long-stdio: false

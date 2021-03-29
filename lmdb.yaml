@@ -13,5 +13,5 @@
 - project:
     name: lmdb
     architectures: !!python/tuple [amd64]
-    distributions: !!python/tuple [buster]
+    distributions: !!python/tuple [buster, bullseye]
     <<: *lmdb_packages

@@ -10,5 +10,5 @@
 - project:
     name: coccinelle
     architectures: !!python/tuple [amd64]
-    distributions: !!python/tuple [buster, sid]
+    distributions: !!python/tuple [buster, bullseye, sid]
     <<: *coccinelle_packages

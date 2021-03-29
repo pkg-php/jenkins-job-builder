@@ -9,9 +9,10 @@
       - openssl:
           git-url: 'https://salsa.debian.org/ondrej/openssl.git'
           branches: !!python/tuple [debian/unstable]
+          distributions: !!python/tuple [stretch, buster]
 
 - project:
     name: softhsm2
     architectures: !!python/tuple [amd64]
-    distributions: !!python/tuple [stretch, buster]
+    distributions: !!python/tuple [stretch, buster, bullseye]
     <<: *softhsm2_packages

@@ -36,7 +36,7 @@
 - project:
     name: bind
     architectures: !!python/tuple [amd64, i386, armhf, arm64]
-    distributions: !!python/tuple [stretch, buster]
+    distributions: !!python/tuple [stretch, buster, bullseye]
     <<: *bind_packages
 
 - bind_esv_packages: &bind_esv_packages
