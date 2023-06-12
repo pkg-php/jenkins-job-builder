@@ -83,6 +83,7 @@
           architectures: !!python/tuple [amd64]
       - libvirt-php
       - php-amqp
+      - php-apcu-4
       - php-apcu
       - php-apcu-bc
       - php-ast
@@ -90,8 +91,10 @@
       - php-ds-1
       - php-ds
       - php-excimer
+      - php-gearman-1
       - php-gearman
       - php-geoip
+      - php-gmagick-1
       - php-gmagick
       - php-gnupg
       - php-grpc
@@ -99,21 +102,29 @@
       - php-igbinary-2
       - php-igbinary
       - php-imagick
+      - php-inotify-0
       - php-inotify
+      - php-lua-1
       - php-lua
       - php-lz4
+      - php-mailparse-2
       - php-mailparse
       - php-maxminddb
       - php-mcrypt
       - php-memcache-3
       - php-memcache-4
       - php-memcache
+      - php-memcached-2
       - php-memcached
       - php-mongo
+      - php-mongodb-1-7
+      - php-mongodb-1-9
+      - php-mongodb-1-11
       - php-mongodb
       - php-msgpack-5
       - php-msgpack-7
       - php-msgpack
+      - php-oauth-1
       - php-oauth
       - php-pcov
       - php-pecl-http-2
@@ -136,6 +147,7 @@
       - php-smbclient
       - php-sodium
       - php-solr
+      - php-ssh2-0
       - php-ssh2
       - php-stomp-5
       - php-stomp
@@ -147,6 +159,10 @@
       - php-xhprof
       - php-xmlrpc
       - php-yac
+      - php-yaml-1
+      - php-yaml-2-0
+      - php-yaml-2-1
+      - php-yaml-2-2
       - php-yaml
       - php-zmq
       - php-zstd
