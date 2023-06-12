@@ -20,6 +20,4 @@
 
 - project:
     name: apache2
-    distributions: !!python/tuple [stretch, buster, bullseye]
-    architectures: !!python/tuple [amd64, i386, armhf, arm64]
     <<: *apache2_packages

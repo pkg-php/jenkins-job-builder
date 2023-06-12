@@ -40,7 +40,7 @@
           record-artifacts: true
     properties:
       - build-discarder:
-          num-to-keep: 3
+          num-to-keep: 1
           artifact-num-to-keep: 1
       
 - job-template:
@@ -119,7 +119,7 @@
       - timestamps
     properties:
       - build-discarder:
-          num-to-keep: 3
+          num-to-keep: 1
           artifact-num-to-keep: 1
 
 - job-template:
@@ -162,5 +162,5 @@
       - timestamps
     properties:
       - build-discarder:
-          num-to-keep: 3
+          num-to-keep: 1
           artifact-num-to-keep: 1

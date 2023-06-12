@@ -5,11 +5,7 @@
     package:
       - bind9:
           git-url: 'https://salsa.debian.org/dns-team/bind9.git'
-          branches: !!python/tuple [isc/backports/9.16]
-      - ruby-ronn:
-          git-url: 'https://salsa.debian.org/ondrej/ruby-ronn'
-          architectures: !!python/tuple [amd64]
-          distributions: !!python/tuple [stretch]
+          branches: !!python/tuple [isc/backports/9.18]
       - libidn2:
           git-url: 'https://salsa.debian.org/debian/libidn2.git'
       - libuv1:
@@ -20,23 +16,9 @@
       - libmaxminddb:
           git-url: 'https://salsa.debian.org/debian/libmaxminddb.git'
           branches: !!python/tuple [debian]
-      - fstrm:
-          git-url: 'https://salsa.debian.org/ondrej/fstrm'
-          distributions: !!python/tuple [stretch]
-      - protobuf-c:
-          git-url: 'https://salsa.debian.org/ondrej/protobuf-c'
-          distributions: !!python/tuple [stretch]
-      - protobuf:
-          git-url: 'https://salsa.debian.org/ondrej/protobuf'
-          distributions: !!python/tuple [stretch]
-      - googletest:
-          git-url: 'https://salsa.debian.org/ondrej/googletest.git'
-          distributions: !!python/tuple [stretch]
 
 - project:
     name: bind
-    architectures: !!python/tuple [amd64, i386, armhf, arm64]
-    distributions: !!python/tuple [stretch, buster, bullseye]
     <<: *bind_packages
 
 - bind_esv_packages: &bind_esv_packages
@@ -45,11 +27,7 @@
     package:
       - bind9:
           git-url: 'https://salsa.debian.org/dns-team/bind9.git'
-          branches: !!python/tuple [isc/backports/9.11]
-      - ruby-ronn:
-          git-url: 'https://salsa.debian.org/ondrej/ruby-ronn'
-          architectures: !!python/tuple [amd64]
-          distributions: !!python/tuple [stretch]
+          branches: !!python/tuple [isc/backports/9.16]
       - libidn2:
           git-url: 'https://salsa.debian.org/debian/libidn2.git'
       - libuv1:
@@ -60,23 +38,10 @@
       - libmaxminddb:
           git-url: 'https://salsa.debian.org/debian/libmaxminddb.git'
           branches: !!python/tuple [debian]
-      - fstrm:
-          git-url: 'https://salsa.debian.org/ondrej/fstrm'
-          distributions: !!python/tuple [stretch]
-      - protobuf-c:
-          git-url: 'https://salsa.debian.org/ondrej/protobuf-c'
-          distributions: !!python/tuple [stretch]
-      - protobuf:
-          git-url: 'https://salsa.debian.org/ondrej/protobuf'
-          distributions: !!python/tuple [stretch]
-      - googletest:
-          git-url: 'https://salsa.debian.org/ondrej/googletest.git'
-          distributions: !!python/tuple [stretch]
 
 - project:
     name: bind-esv
     repo: bind-esv
-    architectures: !!python/tuple [amd64, i386, armhf, arm64]
     <<: *bind_esv_packages
 
 - bind_dev_packages: &bind_dev_packages
@@ -85,11 +50,10 @@
     package:
       - bind9:
           git-url: 'https://salsa.debian.org/dns-team/bind9.git'
-          branches: !!python/tuple [isc/backports/9.17]
+          branches: !!python/tuple [isc/backports/9.19]
       - ruby-ronn:
           git-url: 'https://salsa.debian.org/ondrej/ruby-ronn'
           architectures: !!python/tuple [amd64]
-          distributions: !!python/tuple [stretch]
       - libidn2:
           git-url: 'https://salsa.debian.org/debian/libidn2.git'
       - libuv1:
@@ -100,21 +64,11 @@
       - libmaxminddb:
           git-url: 'https://salsa.debian.org/debian/libmaxminddb.git'
           branches: !!python/tuple [debian]
-      - fstrm:
-          git-url: 'https://salsa.debian.org/ondrej/fstrm'
-          distributions: !!python/tuple [stretch]
-      - protobuf-c:
-          git-url: 'https://salsa.debian.org/ondrej/protobuf-c'
-          distributions: !!python/tuple [stretch]
-      - protobuf:
-          git-url: 'https://salsa.debian.org/ondrej/protobuf'
-          distributions: !!python/tuple [stretch]
-      - googletest:
-          git-url: 'https://salsa.debian.org/ondrej/googletest.git'
-          distributions: !!python/tuple [stretch]
+      - liburcu:
+          git-url: 'https://salsa.debian.org/debian/liburcu.git'
+          branches: !!python/tuple [debian/sid]
 
 - project:
     name: bind-dev
     repo: bind-dev
-    architectures: !!python/tuple [amd64, i386, armhf, arm64]
     <<: *bind_dev_packages

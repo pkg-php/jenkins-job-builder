@@ -5,11 +5,7 @@
       - python-boto:
           git-url: 'https://salsa.debian.org/ondrej/python-boto.git'
           architectures: !!python/tuple [amd64]
-#          distributions: !!python/tuple [stretch, buster, bullseye]
-      - ruby-ronn:
-          git-url: 'https://salsa.debian.org/ondrej/ruby-ronn'
-          architectures: !!python/tuple [amd64]
-          distributions: !!python/tuple [stretch]
+#          distributions: !!python/tuple [buster, bullseye]
       - pcre2:
           git-url: 'https://salsa.debian.org/ondrej/pcre2.git'
           branches: !!python/tuple [master]
@@ -21,9 +17,11 @@
           branches: !!python/tuple [deb.sury.org/master]
       - libgd2:
           git-url: 'https://salsa.debian.org/debian/libgd2.git'
+          branches: !!python/tuple [debian/main]
       - libxml2:
           git-url: 'https://salsa.debian.org/ondrej/libxml2.git'
-          branches: !!python/tuple [experimental]
+          branches: !!python/tuple [main]
+          distributions: !!python/tuple [buster, bullseye]
       - libzip:
           git-url: 'https://salsa.debian.org/debian/libzip.git'
           branches: !!python/tuple [deb.sury.org/main]
@@ -64,6 +62,12 @@
       - php8.0:
           git-url: 'https://salsa.debian.org/php-team/php.git'
           branches: !!python/tuple [debian/main/8.0]
+      - php8.1:
+          git-url: 'https://salsa.debian.org/php-team/php.git'
+          branches: !!python/tuple [debian/main/8.1]
+      - php8.2:
+          git-url: 'https://salsa.debian.org/php-team/php.git'
+          branches: !!python/tuple [debian/main/8.2]
       - php-defaults:
           git-url: 'https://salsa.debian.org/php-team/php-defaults.git'
           branches: !!python/tuple [deb.sury.org/main]
@@ -74,7 +78,7 @@
       - libzstd:
           git-url: 'https://salsa.debian.org/ondrej/libzstd.git'
           branches: !!python/tuple [deb.sury.org/main]
-          distributions: !!python/tuple [stretch, buster]
+          distributions: !!python/tuple [buster]
       - pkg-php-tools:
           architectures: !!python/tuple [amd64]
       - libvirt-php
@@ -83,12 +87,16 @@
       - php-apcu-bc
       - php-ast
       - php-decimal
+      - php-ds-1
       - php-ds
+      - php-excimer
       - php-gearman
       - php-geoip
       - php-gmagick
       - php-gnupg
       - php-grpc
+      - php-grpc-5
+      - php-igbinary-2
       - php-igbinary
       - php-imagick
       - php-inotify
@@ -97,29 +105,39 @@
       - php-mailparse
       - php-maxminddb
       - php-mcrypt
+      - php-memcache-3
+      - php-memcache-4
       - php-memcache
       - php-memcached
       - php-mongo
       - php-mongodb
+      - php-msgpack-5
+      - php-msgpack-7
       - php-msgpack
       - php-oauth
       - php-pcov
+      - php-pecl-http-2
+      - php-pecl-http-3
       - php-pecl-http
       - php-phalcon3
       - php-phalcon4
+      - php-phalcon5
       - php-pinba
       - php-propro
+      - php-protobuf-5
       - php-protobuf
       - php-ps
       - php-psr
       - php-radius
       - php-raphf
+      - php-rdkafka
       - php-redis
       - php-rrd
       - php-smbclient
       - php-sodium
       - php-solr
       - php-ssh2
+      - php-stomp-5
       - php-stomp
       - php-swoole
       - php-uopz
@@ -144,8 +162,6 @@
 - project:
     name: php
     repo: php
-    architectures: !!python/tuple [amd64, i386, armhf, arm64]
-    distributions: !!python/tuple [stretch, buster, bullseye]
     deb_build_options: nocheck
     deb_build_profiles: nocheck
     <<: *php_packages
@@ -162,7 +178,6 @@
     name: php-qa
     repo: php-qa
     architectures: !!python/tuple [amd64]
-    distributions: !!python/tuple [stretch, buster, bullseye]
     deb_build_options: nocheck
     deb_build_profiles: nocheck
     <<: *php_qa_packages

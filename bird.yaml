@@ -5,11 +5,11 @@
     package:
       - bird:
           git-url: 'https://salsa.debian.org/debian/bird.git'
-          distributions: !!python/tuple [stretch, buster, bullseye]
+          distributions: !!python/tuple [buster, bullseye]
       - bird2:
           git-url: 'https://salsa.debian.org/debian/bird2.git'
           branches: !!python/tuple [deb.sury.org/master]
-          distributions: !!python/tuple [stretch, buster, bullseye]
+          distributions: !!python/tuple [buster, bullseye]
 
 - project:
     name: bird

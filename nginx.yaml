@@ -1,7 +1,6 @@
 - project:
     <<: *defaults
     name: nginx-mainline
-    distributions: !!python/tuple [stretch, buster, bullseye]
     cloudsmith_repo: 'nginx-mainline'
     package:
       - brotli:
@@ -12,12 +11,11 @@
           branches: !!python/tuple [debian/bullseye]
       - nginx:
           git-url: 'https://salsa.debian.org/ondrej/nginx.git'
-          branches: !!python/tuple [main-1.19]
+          branches: !!python/tuple [main-1.25]
 
 - project:
     <<: *defaults
     name: nginx
-    distributions: !!python/tuple [stretch, buster, bullseye]
     cloudsmith_repo: 'nginx-stable'
     package:
       - brotli:
@@ -28,4 +26,4 @@
           branches: !!python/tuple [debian/bullseye]
       - nginx:
           git-url: 'https://salsa.debian.org/ondrej/nginx.git'
-          branches: !!python/tuple [main-1.18]
+          branches: !!python/tuple [main-1.24]
