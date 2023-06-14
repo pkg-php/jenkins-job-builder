@@ -134,30 +134,40 @@
       - php-phalcon4
       - php-phalcon5
       - php-pinba
+      - php-propro-1
       - php-propro
       - php-protobuf-5
       - php-protobuf
+      - php-ps-1-3
       - php-ps
       - php-psr
       - php-radius
+      - php-raphf-1
       - php-raphf
       - php-rdkafka
+      - php-redis-4
       - php-redis
+      - php-rrd-1
       - php-rrd
       - php-smbclient
       - php-sodium
+      - php-solr-2-4
       - php-solr
       - php-ssh2-0
       - php-ssh2
       - php-stomp-5
       - php-stomp
       - php-swoole
+      - php-uopz-6
       - php-uopz
+      - php-uploadprogress-1
       - php-uploadprogress
       - php-uuid
       - php-vips
+      - php-xhprof-0
       - php-xhprof
       - php-xmlrpc
+      - php-yac-0
       - php-yac
       - php-yaml-1
       - php-yaml-2-0
@@ -169,6 +179,10 @@
       - sassphp
       - tideways
       - xcache
+      - xdebug-2-5
+      - xdebug-2-8
+      - xdebug-2-9
+      - xdebug-3-1
       - xdebug
       - php-pear:
           architectures: !!python/tuple [amd64]
