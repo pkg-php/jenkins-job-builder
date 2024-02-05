@@ -3,6 +3,9 @@
     name: bind_packages
     cdn: bind
     package:
+      - debsuryorg-archive-keyring:
+         git-url: 'https://salsa.debian.org/ondrej/debsuryorg-archive-keyring.git'
+         branches: !!python/tuple [main]
       - bind9:
           git-url: 'https://salsa.debian.org/dns-team/bind9.git'
           branches: !!python/tuple [isc/backports/9.18]

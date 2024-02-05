@@ -2,6 +2,9 @@
     <<: *defaults
     git-url: 'https://salsa.debian.org/php-team/pecl/{package}.git'
     package:
+      - debsuryorg-archive-keyring:
+         git-url: 'https://salsa.debian.org/ondrej/debsuryorg-archive-keyring.git'
+         branches: !!python/tuple [main]
       - python-boto:
           git-url: 'https://salsa.debian.org/ondrej/python-boto.git'
           architectures: !!python/tuple [amd64]
@@ -68,6 +71,9 @@
       - php8.2:
           git-url: 'https://salsa.debian.org/php-team/php.git'
           branches: !!python/tuple [debian/main/8.2]
+      - php8.3:
+          git-url: 'https://salsa.debian.org/php-team/php.git'
+          branches: !!python/tuple [debian/main/8.3]
       - php-defaults:
           git-url: 'https://salsa.debian.org/php-team/php-defaults.git'
           branches: !!python/tuple [deb.sury.org/main]
@@ -82,6 +88,7 @@
       - pkg-php-tools:
           architectures: !!python/tuple [amd64]
       - libvirt-php
+      - php-amqp-1
       - php-amqp
       - php-apcu-4
       - php-apcu
@@ -124,6 +131,7 @@
       - php-msgpack-5
       - php-msgpack-7
       - php-msgpack
+      - php-mysqlnd-ms
       - php-oauth-1
       - php-oauth
       - php-pcov
@@ -146,6 +154,7 @@
       - php-raphf
       - php-rdkafka
       - php-redis-4
+      - php-redis-5
       - php-redis
       - php-rrd-1
       - php-rrd
@@ -200,6 +209,9 @@
     <<: *defaults
     git-url: 'https://salsa.debian.org/php-team/pecl/{package}.git'
     package:
+      - debsuryorg-archive-keyring:
+         git-url: 'https://salsa.debian.org/ondrej/debsuryorg-archive-keyring.git'
+         branches: !!python/tuple [main]
       - php-defaults:
           git-url: 'https://salsa.debian.org/php-team/php-defaults.git'
           branches: !!python/tuple [deb.sury.org/main]

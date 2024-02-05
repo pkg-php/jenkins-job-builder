@@ -2,6 +2,9 @@
     <<: *defaults
     name: apache2_packages
     package:
+      - debsuryorg-archive-keyring:
+         git-url: 'https://salsa.debian.org/ondrej/debsuryorg-archive-keyring.git'
+         branches: !!python/tuple [main]
       - apache2:
           git-url: 'https://salsa.debian.org/apache-team/apache2.git'
           branches: !!python/tuple [deb.sury.org/main]

@@ -3,6 +3,9 @@
     name: nginx-mainline
     cloudsmith_repo: 'nginx-mainline'
     package:
+      - debsuryorg-archive-keyring:
+         git-url: 'https://salsa.debian.org/ondrej/debsuryorg-archive-keyring.git'
+         branches: !!python/tuple [main]
       - brotli:
           git-url: 'https://salsa.debian.org/debian/brotli.git'
           branches: !!python/tuple [deb.sury.org/main]
@@ -18,6 +21,9 @@
     name: nginx
     cloudsmith_repo: 'nginx-stable'
     package:
+      - debsuryorg-archive-keyring:
+         git-url: 'https://salsa.debian.org/ondrej/debsuryorg-archive-keyring.git'
+         branches: !!python/tuple [main]
       - brotli:
           git-url: 'https://salsa.debian.org/debian/brotli.git'
           branches: !!python/tuple [deb.sury.org/main]
