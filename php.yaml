@@ -21,6 +21,9 @@
       - libgd2:
           git-url: 'https://salsa.debian.org/debian/libgd2.git'
           branches: !!python/tuple [debian/main]
+      - libmemcached:
+          git-url: 'https://salsa.debian.org/debian/libmemcached.git'
+          branches: !!python/tuple [main]
       - libxml2:
           git-url: 'https://salsa.debian.org/ondrej/libxml2.git'
           branches: !!python/tuple [main]
