@@ -24,7 +24,7 @@
       - shell: |
           export distribution=debian$(distro-info -r --series=${{distribution}})
           export TIMESTAMP_FORMAT="%Y%m%d"
-          export PRE_DCH_HOOK="/usr/local/bin/maybe-gen-control"
+          export PRE_DCH_HOOK="/var/lib/jenkins/bin/maybe-gen-control"
           /usr/bin/generate-git-snapshot
 #      - shell: |
 #          mkdir -p report

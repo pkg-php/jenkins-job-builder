@@ -6,7 +6,7 @@
     cdn: 'deb'
     cloudsmith_owner: 'deb-sury-org'
     cloudsmith_repo: ''
-    distributions: !!python/tuple [buster, bullseye, bookworm]
+    distributions: !!python/tuple [bullseye, bookworm]
     architectures: !!python/tuple [amd64, i386, armhf, arm64]
 #    architectures: !!python/tuple [amd64, i386]
     deb_build_options: nocheck

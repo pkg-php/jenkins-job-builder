@@ -1,14 +1,20 @@
-- php_packages: &php_packages
+- project:
     <<: *defaults
+    name: php
+    repo: php
+    deb_build_options: nocheck
+    deb_build_profiles: nocheck
     git-url: 'https://salsa.debian.org/php-team/pecl/{package}.git'
     package:
       - debsuryorg-archive-keyring:
          git-url: 'https://salsa.debian.org/ondrej/debsuryorg-archive-keyring.git'
          branches: !!python/tuple [main]
+      - mpdecimal:
+          git-url: 'https://salsa.debian.org/ondrej/mpdecimal.git'
+          branches: !!python/tuple [deb.sury.org/main]
       - python-boto:
           git-url: 'https://salsa.debian.org/ondrej/python-boto.git'
           architectures: !!python/tuple [amd64]
-#          distributions: !!python/tuple [buster, bullseye]
       - pcre2:
           git-url: 'https://salsa.debian.org/ondrej/pcre2.git'
           branches: !!python/tuple [master]
@@ -23,11 +29,11 @@
           branches: !!python/tuple [debian/main]
       - libmemcached:
           git-url: 'https://salsa.debian.org/debian/libmemcached.git'
-          branches: !!python/tuple [main]
+          branches: !!python/tuple [deb.sury.org/main]
       - libxml2:
           git-url: 'https://salsa.debian.org/ondrej/libxml2.git'
           branches: !!python/tuple [main]
-          distributions: !!python/tuple [buster, bullseye]
+          distributions: !!python/tuple [bullseye]
       - libzip:
           git-url: 'https://salsa.debian.org/debian/libzip.git'
           branches: !!python/tuple [deb.sury.org/main]
@@ -90,6 +96,7 @@
           distributions: !!python/tuple [buster]
       - pkg-php-tools:
           architectures: !!python/tuple [amd64]
+      - libvirt-php-5
       - libvirt-php
       - php-amqp-1
       - php-amqp
@@ -118,6 +125,7 @@
       - php-lua
       - php-lz4
       - php-mailparse-2
+      - php-mailparse-3
       - php-mailparse
       - php-maxminddb
       - php-mcrypt
@@ -130,6 +138,7 @@
       - php-mongodb-1-7
       - php-mongodb-1-9
       - php-mongodb-1-11
+      - php-mongodb-1-16
       - php-mongodb
       - php-msgpack-5
       - php-msgpack-7
@@ -145,9 +154,12 @@
       - php-phalcon4
       - php-phalcon5
       - php-pinba
+      - php-pq
       - php-propro-1
       - php-propro
       - php-protobuf-5
+      - php-protobuf-7
+      - php-protobuf-8
       - php-protobuf
       - php-ps-1-3
       - php-ps
@@ -164,12 +176,14 @@
       - php-smbclient
       - php-sodium
       - php-solr-2-4
+      - php-solr-2-6
       - php-solr
       - php-ssh2-0
       - php-ssh2
       - php-stomp-5
       - php-stomp
-      - php-swoole
+      - php-swoole:
+          architectures: !!python/tuple [amd64, arm64]
       - php-uopz-6
       - php-uopz
       - php-uploadprogress-1
@@ -202,14 +216,12 @@
           git-url: 'https://salsa.debian.org/php-team/pear/php-pear.git'
 
 - project:
-    name: php
-    repo: php
+    <<: *defaults
+    name: php-qa
+    repo: php-qa
+    architectures: !!python/tuple [amd64]
     deb_build_options: nocheck
     deb_build_profiles: nocheck
-    <<: *php_packages
-
-- php_qa_package: &php_qa_packages
-    <<: *defaults
     git-url: 'https://salsa.debian.org/php-team/pecl/{package}.git'
     package:
       - debsuryorg-archive-keyring:
@@ -217,12 +229,9 @@
          branches: !!python/tuple [main]
       - php-defaults:
           git-url: 'https://salsa.debian.org/php-team/php-defaults.git'
-          branches: !!python/tuple [deb.sury.org/main]
-
-- project:
-    name: php-qa
-    repo: php-qa
-    architectures: !!python/tuple [amd64]
-    deb_build_options: nocheck
-    deb_build_profiles: nocheck
-    <<: *php_qa_packages
+          branches: !!python/tuple [deb.sury.org/8.4]
+      - php8.4:
+          git-url: 'https://salsa.debian.org/php-team/php.git'
+          branches: !!python/tuple [debian/main/8.4]
+      - php-imap
+      - php-pspell

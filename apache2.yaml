@@ -1,6 +1,9 @@
-- apache2_packages: &apache2_packages
+- project:
     <<: *defaults
-    name: apache2_packages
+    name: apache2
+    repo: apache2
+    deb_build_options: nocheck
+    deb_build_profiles: nocheck
     package:
       - debsuryorg-archive-keyring:
          git-url: 'https://salsa.debian.org/ondrej/debsuryorg-archive-keyring.git'
@@ -20,7 +23,3 @@
       - nghttp2:
           git-url: 'https://salsa.debian.org/ondrej/nghttp2.git'
           branches: !!python/tuple [deb.sury.org/master]
-
-- project:
-    name: apache2
-    <<: *apache2_packages

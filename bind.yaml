@@ -1,7 +1,9 @@
-- bind_packages: &bind_packages
+- project:
     <<: *defaults
-    name: bind_packages
-    cdn: bind
+    name: bind
+    repo: bind
+    deb_build_options: nocheck
+    deb_build_profiles: nocheck
     package:
       - debsuryorg-archive-keyring:
          git-url: 'https://salsa.debian.org/ondrej/debsuryorg-archive-keyring.git'
@@ -21,16 +23,18 @@
           branches: !!python/tuple [debian]
 
 - project:
-    name: bind
-    <<: *bind_packages
-
-- bind_esv_packages: &bind_esv_packages
     <<: *defaults
-    name: bind_esv_packages
+    name: bind-esv
+    repo: bind-esv
+    deb_build_options: nocheck
+    deb_build_profiles: nocheck
     package:
+      - debsuryorg-archive-keyring:
+         git-url: 'https://salsa.debian.org/ondrej/debsuryorg-archive-keyring.git'
+         branches: !!python/tuple [main]
       - bind9:
           git-url: 'https://salsa.debian.org/dns-team/bind9.git'
-          branches: !!python/tuple [isc/backports/9.16]
+          branches: !!python/tuple [isc/backports/9.18]
       - libidn2:
           git-url: 'https://salsa.debian.org/debian/libidn2.git'
       - libuv1:
@@ -43,14 +47,15 @@
           branches: !!python/tuple [debian]
 
 - project:
-    name: bind-esv
-    repo: bind-esv
-    <<: *bind_esv_packages
-
-- bind_dev_packages: &bind_dev_packages
     <<: *defaults
-    name: bind_packages
+    name: bind-dev
+    repo: bind-dev
+    deb_build_options: nocheck
+    deb_build_profiles: nocheck
     package:
+      - debsuryorg-archive-keyring:
+         git-url: 'https://salsa.debian.org/ondrej/debsuryorg-archive-keyring.git'
+         branches: !!python/tuple [main]
       - bind9:
           git-url: 'https://salsa.debian.org/dns-team/bind9.git'
           branches: !!python/tuple [isc/backports/9.19]
@@ -70,8 +75,3 @@
       - liburcu:
           git-url: 'https://salsa.debian.org/debian/liburcu.git'
           branches: !!python/tuple [debian/sid]
-
-- project:
-    name: bind-dev
-    repo: bind-dev
-    <<: *bind_dev_packages
