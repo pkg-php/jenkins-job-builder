@@ -10,7 +10,7 @@
          branches: !!python/tuple [main]
       - bind9:
           git-url: 'https://salsa.debian.org/dns-team/bind9.git'
-          branches: !!python/tuple [isc/backports/9.18]
+          branches: !!python/tuple [isc/backports/9.20]
       - libidn2:
           git-url: 'https://salsa.debian.org/debian/libidn2.git'
       - libuv1:
@@ -58,7 +58,7 @@
          branches: !!python/tuple [main]
       - bind9:
           git-url: 'https://salsa.debian.org/dns-team/bind9.git'
-          branches: !!python/tuple [isc/backports/9.19]
+          branches: !!python/tuple [isc/backports/9.21]
       - ruby-ronn:
           git-url: 'https://salsa.debian.org/ondrej/ruby-ronn'
           architectures: !!python/tuple [amd64]

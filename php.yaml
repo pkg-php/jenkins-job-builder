@@ -83,6 +83,9 @@
       - php8.3:
           git-url: 'https://salsa.debian.org/php-team/php.git'
           branches: !!python/tuple [debian/main/8.3]
+      - php8.4:
+          git-url: 'https://salsa.debian.org/php-team/php.git'
+          branches: !!python/tuple [debian/main/8.4]
       - php-defaults:
           git-url: 'https://salsa.debian.org/php-team/php-defaults.git'
           branches: !!python/tuple [deb.sury.org/main]
@@ -105,6 +108,8 @@
       - php-apcu-bc
       - php-ast
       - php-decimal
+      - php-dio-2
+      - php-dio
       - php-ds-1
       - php-ds
       - php-excimer
@@ -119,6 +124,7 @@
       - php-igbinary-2
       - php-igbinary
       - php-imagick
+      - php-imap
       - php-inotify-0
       - php-inotify
       - php-lua-1
@@ -146,13 +152,14 @@
       - php-mysqlnd-ms
       - php-oauth-1
       - php-oauth
+      - php-opentelemetry
       - php-pcov
       - php-pecl-http-2
       - php-pecl-http-3
       - php-pecl-http
       - php-phalcon3
       - php-phalcon4
-      - php-phalcon5
+      - php-phalcon
       - php-pinba
       - php-pq
       - php-propro-1
@@ -163,6 +170,7 @@
       - php-protobuf
       - php-ps-1-3
       - php-ps
+      - php-pspell
       - php-psr
       - php-radius
       - php-raphf-1
@@ -233,5 +241,3 @@
       - php8.4:
           git-url: 'https://salsa.debian.org/php-team/php.git'
           branches: !!python/tuple [debian/main/8.4]
-      - php-imap
-      - php-pspell
