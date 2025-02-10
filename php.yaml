@@ -114,6 +114,7 @@
       - php-ds
       - php-excimer
       - php-gearman-1
+      - php-gearman-2
       - php-gearman
       - php-geoip
       - php-gmagick-1
@@ -159,6 +160,8 @@
       - php-pecl-http
       - php-phalcon3
       - php-phalcon4
+      - php-phalcon5:
+          architectures: !!python/tuple [amd64]
       - php-phalcon
       - php-pinba
       - php-pq
@@ -178,6 +181,7 @@
       - php-rdkafka
       - php-redis-4
       - php-redis-5
+      - php-redis-6
       - php-redis
       - php-rrd-1
       - php-rrd
@@ -222,22 +226,3 @@
           architectures: !!python/tuple [amd64]
           branches: !!python/tuple [debian/sid]
           git-url: 'https://salsa.debian.org/php-team/pear/php-pear.git'
-
-- project:
-    <<: *defaults
-    name: php-qa
-    repo: php-qa
-    architectures: !!python/tuple [amd64]
-    deb_build_options: nocheck
-    deb_build_profiles: nocheck
-    git-url: 'https://salsa.debian.org/php-team/pecl/{package}.git'
-    package:
-      - debsuryorg-archive-keyring:
-         git-url: 'https://salsa.debian.org/ondrej/debsuryorg-archive-keyring.git'
-         branches: !!python/tuple [main]
-      - php-defaults:
-          git-url: 'https://salsa.debian.org/php-team/php-defaults.git'
-          branches: !!python/tuple [deb.sury.org/8.4]
-      - php8.4:
-          git-url: 'https://salsa.debian.org/php-team/php.git'
-          branches: !!python/tuple [debian/main/8.4]
