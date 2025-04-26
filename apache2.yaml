@@ -11,15 +11,25 @@
       - apache2:
           git-url: 'https://salsa.debian.org/apache-team/apache2.git'
           branches: !!python/tuple [deb.sury.org/main]
-      - apr:
+      - apr-t64:
           git-url: 'https://salsa.debian.org/apache-team/apr.git'
           branches: !!python/tuple [deb.sury.org/main]
-      - apr-util:
+          distributions: !!python/tuple [trixie]
+      - apr:
+          git-url: 'https://salsa.debian.org/apache-team/apr.git'
+          branches: !!python/tuple [deb.sury.org/bookworm]
+          distributions: !!python/tuple [bullseye, bookworm]
+      - apr-util-t64:
           git-url: 'https://salsa.debian.org/apache-team/apr-util.git'
           branches: !!python/tuple [deb.sury.org/main]
+          distributions: !!python/tuple [trixie]
+      - apr-util:
+          git-url: 'https://salsa.debian.org/apache-team/apr-util.git'
+          branches: !!python/tuple [deb.sury.org/bookworm]
+          distributions: !!python/tuple [bullseye, bookworm]
       - brotli:
           git-url: 'https://salsa.debian.org/debian/brotli.git'
           branches: !!python/tuple [deb.sury.org/main]
-      - nghttp2:
-          git-url: 'https://salsa.debian.org/ondrej/nghttp2.git'
-          branches: !!python/tuple [deb.sury.org/master]
+#      - nghttp2:
+#          git-url: 'https://salsa.debian.org/ondrej/nghttp2.git'
+#          branches: !!python/tuple [deb.sury.org/master]

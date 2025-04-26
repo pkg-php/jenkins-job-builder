@@ -4,16 +4,12 @@
     deb_build_options: nocheck
     deb_build_profiles: nocheck
     package:
-      - debsuryorg-archive-keyring:
-         git-url: 'https://salsa.debian.org/ondrej/debsuryorg-archive-keyring.git'
-         branches: !!python/tuple [main]
-         architectures: !!python/tuple [amd64]
       - brotli:
           git-url: 'https://salsa.debian.org/debian/brotli.git'
           branches: !!python/tuple [deb.sury.org/main]
       - nginx:
          git-url: 'https://salsa.debian.org/ondrej/nginx.git'
-         branches: !!python/tuple [deb.sury.org/main-1.26]
+         branches: !!python/tuple [deb.sury.org/main-1.28]
       - libnginx-mod-http-auth-pam:
          git-url: 'https://salsa.debian.org/ondrej/libnginx-mod-http-auth-pam.git'
          branches: !!python/tuple [deb.sury.org/main]
@@ -58,82 +54,6 @@
          branches: !!python/tuple [deb.sury.org/main]
       - libnginx-mod-rtmp:
          git-url: 'https://salsa.debian.org/ondrej/libnginx-mod-rtmp.git'
-         branches: !!python/tuple [deb.sury.org/main]
-      - libnginx-mod-ssl-ct:
-         git-url: 'https://salsa.debian.org/ondrej/libnginx-mod-ssl-ct.git'
-         branches: !!python/tuple [deb.sury.org/main]
-      - lua-resty-core:
-         git-url: 'https://salsa.debian.org/ondrej/lua-resty-core.git'
-         branches: !!python/tuple [deb.sury.org/main]
-      - lua-resty-lrucache:
-         git-url: 'https://salsa.debian.org/ondrej/lua-resty-lrucache.git'
-         branches: !!python/tuple [deb.sury.org/main]
-      - luajit:
-         git-url: 'https://salsa.debian.org/lua-team/luajit.git'
-         branches: !!python/tuple [deb.sury.org/main]
-
-
-- project:
-    <<: *defaults
-    name: nginx-mainline
-    package:
-      - debsuryorg-archive-keyring:
-         git-url: 'https://salsa.debian.org/ondrej/debsuryorg-archive-keyring.git'
-         branches: !!python/tuple [main]
-         architectures: !!python/tuple [amd64]
-      - brotli:
-          git-url: 'https://salsa.debian.org/debian/brotli.git'
-          branches: !!python/tuple [deb.sury.org/main]
-      - nginx:
-         git-url: 'https://salsa.debian.org/ondrej/nginx.git'
-         branches: !!python/tuple [deb.sury.org/main-1.27]
-      - libnginx-mod-http-auth-pam:
-         git-url: 'https://salsa.debian.org/ondrej/libnginx-mod-http-auth-pam.git'
-         branches: !!python/tuple [deb.sury.org/main]
-      - libnginx-mod-http-cache-purge:
-         git-url: 'https://salsa.debian.org/ondrej/libnginx-mod-http-cache-purge.git'
-         branches: !!python/tuple [deb.sury.org/main]
-      - libnginx-mod-http-dav-ext:
-         git-url: 'https://salsa.debian.org/ondrej/libnginx-mod-http-dav-ext.git'
-         branches: !!python/tuple [deb.sury.org/main]
-      - libnginx-mod-http-brotli:
-         git-url: 'https://salsa.debian.org/ondrej/libnginx-mod-http-brotli.git'
-         branches: !!python/tuple [deb.sury.org/main]
-      - libnginx-mod-http-echo:
-         git-url: 'https://salsa.debian.org/ondrej/libnginx-mod-http-echo.git'
-         branches: !!python/tuple [deb.sury.org/main]
-      - libnginx-mod-http-fancyindex:
-         git-url: 'https://salsa.debian.org/ondrej/libnginx-mod-http-fancyindex.git'
-         branches: !!python/tuple [deb.sury.org/main]
-      - libnginx-mod-http-geoip2:
-         git-url: 'https://salsa.debian.org/ondrej/libnginx-mod-http-geoip2.git'
-         branches: !!python/tuple [deb.sury.org/main]
-      - libnginx-mod-http-headers-more-filter:
-         git-url: 'https://salsa.debian.org/ondrej/libnginx-mod-http-headers-more-filter.git'
-         branches: !!python/tuple [deb.sury.org/main]
-      - libnginx-mod-http-lua:
-         git-url: 'https://salsa.debian.org/ondrej/libnginx-mod-http-lua.git'
-         branches: !!python/tuple [deb.sury.org/main]
-      - libnginx-mod-http-ndk:
-         git-url: 'https://salsa.debian.org/ondrej/libnginx-mod-http-ndk.git'
-         branches: !!python/tuple [deb.sury.org/main]
-      - libnginx-mod-http-subs-filter:
-         git-url: 'https://salsa.debian.org/ondrej/libnginx-mod-http-subs-filter.git'
-         branches: !!python/tuple [deb.sury.org/main]
-      - libnginx-mod-http-uploadprogress:
-         git-url: 'https://salsa.debian.org/ondrej/libnginx-mod-http-uploadprogress.git'
-         branches: !!python/tuple [deb.sury.org/main]
-      - libnginx-mod-http-upstream-fair:
-         git-url: 'https://salsa.debian.org/ondrej/libnginx-mod-http-upstream-fair.git'
-         branches: !!python/tuple [deb.sury.org/main]
-      - libnginx-mod-nchan:
-         git-url: 'https://salsa.debian.org/ondrej/libnginx-mod-nchan.git'
-         branches: !!python/tuple [deb.sury.org/main]
-      - libnginx-mod-rtmp:
-         git-url: 'https://salsa.debian.org/ondrej/libnginx-mod-rtmp.git'
-         branches: !!python/tuple [deb.sury.org/main]
-      - libnginx-mod-ssl-ct:
-         git-url: 'https://salsa.debian.org/ondrej/libnginx-mod-ssl-ct.git'
          branches: !!python/tuple [deb.sury.org/main]
       - lua-resty-core:
          git-url: 'https://salsa.debian.org/ondrej/lua-resty-core.git'

@@ -6,30 +6,26 @@
     deb_build_profiles: nocheck
     git-url: 'https://salsa.debian.org/php-team/pecl/{package}.git'
     package:
-      - debsuryorg-archive-keyring:
-         git-url: 'https://salsa.debian.org/ondrej/debsuryorg-archive-keyring.git'
-         branches: !!python/tuple [main]
+      - uw-imap:
+          git-url: 'https://salsa.debian.org/ondrej/uw-imap.git'
+          branches: !!python/tuple [deb.sury.org/main]
+          distributions: !!python/tuple [trixie]
       - mpdecimal:
           git-url: 'https://salsa.debian.org/ondrej/mpdecimal.git'
           branches: !!python/tuple [deb.sury.org/main]
-      - python-boto:
-          git-url: 'https://salsa.debian.org/ondrej/python-boto.git'
-          architectures: !!python/tuple [amd64]
       - pcre2:
           git-url: 'https://salsa.debian.org/ondrej/pcre2.git'
           branches: !!python/tuple [master]
       - tidy-html5:
           git-url: 'https://salsa.debian.org/debian/tidy-html5.git'
           branches: !!python/tuple [master-backports]
-      - libidn2:
-          git-url: 'https://salsa.debian.org/debian/libidn2.git'
-          branches: !!python/tuple [deb.sury.org/master]
       - libgd2:
           git-url: 'https://salsa.debian.org/debian/libgd2.git'
           branches: !!python/tuple [debian/main]
       - libmemcached:
           git-url: 'https://salsa.debian.org/debian/libmemcached.git'
           branches: !!python/tuple [deb.sury.org/main]
+          distributions: !!python/tuple [bullseye, bookworm]
       - libxml2:
           git-url: 'https://salsa.debian.org/ondrej/libxml2.git'
           branches: !!python/tuple [main]
@@ -37,19 +33,9 @@
       - libzip:
           git-url: 'https://salsa.debian.org/debian/libzip.git'
           branches: !!python/tuple [deb.sury.org/main]
-      - icu:
-          git-url: 'https://salsa.debian.org/ondrej/icu.git'
-          branches: !!python/tuple [deb.sury.org/master]
-      - librabbitmq:
-          git-url: 'https://salsa.debian.org/debian/librabbitmq.git'
-      - argon2:
-          git-url: 'https://salsa.debian.org/debian/argon2.git'
-          branches: !!python/tuple [debian/sid]
       - python-httplib2:
           git-url: 'https://salsa.debian.org/ondrej/python-httplib2.git'
           architectures: !!python/tuple [amd64]
-      - libsodium:
-          git-url: 'https://salsa.debian.org/ondrej/libsodium.git'
       - pcre3:
           git-url: 'https://salsa.debian.org/ondrej/pcre3.git'
           branches: !!python/tuple [master]
@@ -205,6 +191,7 @@
       - php-xhprof-0
       - php-xhprof
       - php-xmlrpc
+      - php-xlswriter
       - php-yac-0
       - php-yac
       - php-yaml-1
