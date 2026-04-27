@@ -60,7 +60,7 @@
       sequential: '{obj:sequential}'
       touchstone:
         expr: 'architecture == "amd64"'
-        result: 'stable'
+        result: stable
     axes:
       - axis:
           type: user-defined
@@ -75,7 +75,6 @@
           name: node
           values:
            - amd64
-           - i386
            - armhf
            - arm64
     builders:

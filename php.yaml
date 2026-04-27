@@ -11,7 +11,7 @@
           branches: !!python/tuple [deb.sury.org/main]
           distributions: !!python/tuple [trixie]
       - mpdecimal:
-          git-url: 'https://salsa.debian.org/ondrej/mpdecimal.git'
+          git-url: 'https://salsa.debian.org/debian/mpdecimal.git'
           branches: !!python/tuple [deb.sury.org/main]
       - pcre2:
           git-url: 'https://salsa.debian.org/ondrej/pcre2.git'
@@ -72,6 +72,9 @@
       - php8.4:
           git-url: 'https://salsa.debian.org/php-team/php.git'
           branches: !!python/tuple [debian/main/8.4]
+      - php8.5:
+          git-url: 'https://salsa.debian.org/php-team/php.git'
+          branches: !!python/tuple [debian/main/8.5]
       - php-defaults:
           git-url: 'https://salsa.debian.org/php-team/php-defaults.git'
           branches: !!python/tuple [deb.sury.org/main]
@@ -134,12 +137,13 @@
       - php-mongodb-1-16
       - php-mongodb
       - php-msgpack-5
-      - php-msgpack-7
       - php-msgpack
       - php-mysqlnd-ms
       - php-oauth-1
       - php-oauth
       - php-opentelemetry
+      - php-openswoole:
+          architectures: !!python/tuple [amd64, arm64]
       - php-pcov
       - php-pecl-http-2
       - php-pecl-http-3

@@ -5,12 +5,10 @@
     deb_build_options: nocheck
     deb_build_profiles: nocheck
     package:
-      - debsuryorg-archive-keyring:
-         git-url: 'https://salsa.debian.org/ondrej/debsuryorg-archive-keyring.git'
-         branches: !!python/tuple [main]
       - bind9:
           git-url: 'https://salsa.debian.org/dns-team/bind9.git'
-          branches: !!python/tuple [isc/backports/9.20]
+#          branches: !!python/tuple [isc/backports/9.20]
+          branches: !!python/tuple [debian/9.20]
       - libidn2:
           git-url: 'https://salsa.debian.org/debian/libidn2.git'
       - libuv1:
@@ -29,12 +27,10 @@
     deb_build_options: nocheck
     deb_build_profiles: nocheck
     package:
-      - debsuryorg-archive-keyring:
-         git-url: 'https://salsa.debian.org/ondrej/debsuryorg-archive-keyring.git'
-         branches: !!python/tuple [main]
       - bind9:
           git-url: 'https://salsa.debian.org/dns-team/bind9.git'
-          branches: !!python/tuple [isc/backports/9.18]
+#          branches: !!python/tuple [isc/backports/9.18]
+          branches: !!python/tuple [debian/9.18]
       - libidn2:
           git-url: 'https://salsa.debian.org/debian/libidn2.git'
       - libuv1:
@@ -52,13 +48,16 @@
     repo: bind-dev
     deb_build_options: nocheck
     deb_build_profiles: nocheck
+    distributions: !!python/tuple [bookworm, trixie]
     package:
-      - debsuryorg-archive-keyring:
-         git-url: 'https://salsa.debian.org/ondrej/debsuryorg-archive-keyring.git'
-         branches: !!python/tuple [main]
       - bind9:
           git-url: 'https://salsa.debian.org/dns-team/bind9.git'
-          branches: !!python/tuple [isc/backports/9.21]
+#          branches: !!python/tuple [isc/backports/9.21]
+          branches: !!python/tuple [debian/9.21]
+      - meson:
+          git-url: https://salsa.debian.org/ondrej/meson.git
+          branches: !!python/tuple [main]
+          architectures: !!python/tuple [amd64]
       - ruby-ronn:
           git-url: 'https://salsa.debian.org/ondrej/ruby-ronn'
           architectures: !!python/tuple [amd64]
