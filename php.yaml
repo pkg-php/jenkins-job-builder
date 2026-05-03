@@ -75,9 +75,11 @@
       - php8.5:
           git-url: 'https://salsa.debian.org/php-team/php.git'
           branches: !!python/tuple [debian/main/8.5]
+          sequential: false
       - php-defaults:
           git-url: 'https://salsa.debian.org/php-team/php-defaults.git'
           branches: !!python/tuple [deb.sury.org/main]
+          sequential: false
       - dh-php:
           git-url: 'https://salsa.debian.org/php-team/dh-php.git'
           architectures: !!python/tuple [amd64]
