@@ -55,8 +55,9 @@
       curl -L https://packages.sury.org/{repo}/README.txt | bash -x
       </pre>
     execution-strategy:
-      combination-filter: |
-        (architecture == "amd64" && node == "amd64") || (architecture == "i386" && node == "i386") || (architecture == "armhf" && node == "armhf") || (architecture == "arm64" && node == "arm64")
+      combination-filter: >
+        architecture == node &&
+        !(node == "armhf" && distribution == "resolute")
       sequential: '{obj:sequential}'
       touchstone:
         expr: 'architecture == "amd64"'
